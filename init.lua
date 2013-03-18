@@ -84,22 +84,6 @@ minetest.register_craft({
 	},
 })
 
-minetest.register_craft({
-	output = "wool:white",
-	recipe = {
-		{"default:dry_shrub","flowers:cotton"},
-		{"flowers:cotton","default:dry_shrub"},
-	},
-})
-
-minetest.register_craft({
-	output = "wool:white",
-	recipe = {
-		{"flowers:cotton","default:dry_shrub"},
-		{"default:dry_shrub","flowers:cotton"},
-	},
-})
-
 minetest.register_craftitem("gloopblocks:evil_stick", {
 	description = "Evil Stick",
 	inventory_image = "gloopblocks_evil_stick.png",

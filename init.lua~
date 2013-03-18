@@ -987,7 +987,7 @@ end
 gloopblocks.register_stair_and_slab_and_panel_and_micro("cement", "gloopblocks:cement", {cracky=2}, {"gloopblocks_cement.png"}, "Cement Stairs", "Cement Slab", "Cement Panel", "Cement Microblock", "cement")
 gloopblocks.register_stair_and_slab_and_panel_and_micro("evil", "gloopblocks:evil_block", {cracky=3}, {"gloopblocks_evil_block.png"}, "Evil Stairs", "Evil Slab", "Evil Panel", "Evil Microblock", "evil")
 
-minetest.register_alias("default:obsidian","gloopblocks:obsidian")
+minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 
 minetest.register_node("gloopblocks:basalt", {
 	description = "Basalt",
