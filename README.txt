@@ -1,7 +1,7 @@
-This mod adds a number of decorative and functional blocks to Minetest,
-including cement, rainbow blocks, a new way to craft wool, "evil" blocks and
-sticks, and the usual collection of tools of various strengths and speeds made
-from either cement or "evil" components.
+This mod adds a number of decorative and functional blocks to Minetest, 
+including cement, rainbow blocks, "evil" blocks and sticks, and the usual 
+collection of tools of various strengths and speeds made from either cement or 
+"evil" components.  It also supplies a few useful functions - see below.
 
 Crafting
 
