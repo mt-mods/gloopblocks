@@ -449,24 +449,32 @@ minetest.register_abm({
 	end,
 })
 
-minetest.register_abm({
-	nodenames = {"default:lava_flowing"},
-	neighbors = {"default:water_source"},
-	interval = 1.0,
-	chance = 1,
-	action = function(pos)
-		minetest.env:add_node(pos,{name="gloopblocks:basalt"})
-	end,
-})
+-- Hook into the default lavacooling function to generate basalt and pumice
 
-minetest.register_abm({
-	nodenames = {"default:lava_flowing"},
-	neighbors = {"default:water_flowing"},
-	interval = 1.0,
-	chance = 1,
-	action = function(pos)
-		minetest.env:add_node(pos,{name="gloopblocks:pumice"})
-	end,
-})
+default.cool_lava_source = function(pos)
+	if gloopblocks_search_nearby_nodes(pos,"default:water_source")
+	or gloopblocks_search_nearby_nodes(pos,"default:water_flowing") then
+		minetest.env:set_node(pos, {name="default:obsidian"})
+	end
+end
+
+default.cool_lava_flowing = function(pos)
+	if gloopblocks_search_nearby_nodes(pos,"default:water_source") then
+		minetest.env:set_node(pos, {name="gloopblocks:basalt"})
+	elseif gloopblocks_search_nearby_nodes(pos,"default:water_flowing") then
+		minetest.env:set_node(pos, {name="gloopblocks:pumice"})
+	end
+end
+
+gloopblocks_search_nearby_nodes = function(pos, node)
+	if minetest.env:get_node({x=pos.x-1, y=pos.y, z=pos.z}).name == node then return true end
+	if minetest.env:get_node({x=pos.x+1, y=pos.y, z=pos.z}).name == node then return true end
+	if minetest.env:get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == node then return true end
+	if minetest.env:get_node({x=pos.x, y=pos.y+1, z=pos.z}).name == node then return true end
+	if minetest.env:get_node({x=pos.x, y=pos.y, z=pos.z-1}).name == node then return true end
+	if minetest.env:get_node({x=pos.x, y=pos.y, z=pos.z+1}).name == node then return true end
+	return false
+end
+
 
 print("Gloopblocks Loaded!")
