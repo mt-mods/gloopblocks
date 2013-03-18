@@ -6,7 +6,39 @@ Licensed under WTFPL.
 
 Updates by VanessaE 2013-03-17.
 
+the register_gloopblocks_alias function is borrowed from stairsplus.
+
 --]]
+
+-- Helper functions
+
+function register_gloopblocks_alias(modname, origname, newname)
+	minetest.register_alias(modname .. ":slab_" .. origname, "gloopblocks:slab_" .. newname)
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_inverted", "gloopblocks:slab_" .. newname .. "_inverted")
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_wall", "gloopblocks:slab_" .. newname .. "_wall")
+	minetest.register_alias(modname .. ":stair_" .. origname, "gloopblocks:stair_" .. newname)
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_inverted", "gloopblocks:stair_" .. newname .. "_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall", "gloopblocks:stair_" .. newname .. "_wall")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half", "gloopblocks:stair_" .. newname .. "_wall_half")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half_inverted", "gloopblocks:stair_" .. newname .. "_wall_half_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_half", "gloopblocks:stair_" .. newname .. "_half")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_half_inverted", "gloopblocks:stair_" .. newname .. "_half_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_right_half", "gloopblocks:stair_" .. newname .. "_right_half")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_right_half_inverted", "gloopblocks:stair_" .. newname .. "_right_half_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half", "gloopblocks:stair_" .. newname .. "_wall_half")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half_inverted", "gloopblocks:stair_" .. newname .. "_wall_half_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_inner", "gloopblocks:stair_" .. newname .. "_inner")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_inner_inverted", "gloopblocks:stair_" .. newname .. "_inner_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_outer", "gloopblocks:stair_" .. newname .. "_outer")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_outer_inverted", "gloopblocks:stair_" .. newname .. "_outer_inverted")
+	minetest.register_alias(modname .. ":panel_" .. origname .. "_bottom", "gloopblocks:panel_" .. newname .. "_bottom")
+	minetest.register_alias(modname .. ":panel_" .. origname .. "_top", "gloopblocks:panel_" .. newname .. "_top")
+	minetest.register_alias(modname .. ":panel_" .. origname .. "_vertical", "gloopblocks:panel_" .. newname .. "_vertical")
+	minetest.register_alias(modname .. ":micro_" .. origname .. "_bottom", "gloopblocks:micro_" .. newname .. "_bottom")
+	minetest.register_alias(modname .. ":micro_" .. origname .. "_top", "gloopblocks:micro_" .. newname .. "_top")
+end
+
+-- Nodes
 
 minetest.register_node("gloopblocks:rainbow_block", {
 	description = "Rainbow Block",
@@ -16,87 +48,12 @@ minetest.register_node("gloopblocks:rainbow_block", {
 	sounds = default.node_sound_defaults(),
 })
 
-minetest.register_craft( {
-	type = "shapeless",
-	output = "gloopblocks:rainbow_block",
-	recipe = {
-		"group:basecolor_red",
-		"group:excolor_orange",
-		"group:basecolor_yellow",
-		"group:basecolor_green",
-		"group:basecolor_blue",
-		"group:excolor_violet",
-		"default:stone",
-		"default:mese_crystal",
-	},
-})
-
-minetest.register_craft({
-	output = "default:nyancat",
-	recipe = {
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-	}
-})
-
-minetest.register_craft({
-	output = "default:nyancat_rainbow",
-	recipe = {
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-	}
-})
-
 minetest.register_node("gloopblocks:cement", {
 	description = "Cement",
 	tiles = {"gloopblocks_cement.png"},
 	is_ground_content = true,
 	groups = {cracky=2},
 	sounds = default.node_sound_stone_defaults(),
-})
-
-minetest.register_craftitem("gloopblocks:wet_cement", {
-	description = "Wet Cement",
-	inventory_image = "gloopblocks_wet_cement.png",
-})
-
-minetest.register_craft({
-	type = "shapeless",
-	output = "gloopblocks:wet_cement",
-	recipe = {
-		"bucket:bucket_water",
-		"default:gravel",
-	},
-	replacements = {{'bucket:bucket_water', 'bucket:bucket_empty'},},
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "gloopblocks:cement",
-	recipe = "gloopblocks:wet_cement",
-	cooktime = 8
-})
-
-minetest.register_craft({
-	output = "default:gravel 2",
-	recipe = {
-		{"gloopblocks:cement"},
-	},
-})
-
-minetest.register_craftitem("gloopblocks:evil_stick", {
-	description = "Evil Stick",
-	inventory_image = "gloopblocks_evil_stick.png",
-})
-
-minetest.register_craft({
-	type = "shapeless",
-	output = "gloopblocks:evil_stick",
-	recipe = {
-		"gloopores:kalite_lump",
-		"default:coal_lump",
-		"default:stick"
-	}
 })
 
 minetest.register_node("gloopblocks:evil_block", {
@@ -108,44 +65,55 @@ minetest.register_node("gloopblocks:evil_block", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_craft({
-	output = "gloopblocks:evil_block",
-	recipe = {
-		{"gloopblocks:evil_stick", "gloopblocks:evil_stick"},
-		{"gloopblocks:evil_stick", "gloopblocks:evil_stick"},
-	}
+minetest.register_node("gloopblocks:basalt", {
+	description = "Basalt",
+	tiles = {"gloopblocks_basalt.png"},
+	groups = {cracky=2},
+	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_craft({
-	output = "gloopblocks:evil_stick 4",
-	recipe = {
-		{"gloopblocks:evil_block"}
-	}
-})
-
-minetest.register_node("gloopblocks:rainbow_block", {
-	description = "Rainbow Block",
-	tiles = {"gloopblocks_rainbow_block.png"},
-	is_ground_content = true,
+minetest.register_node("gloopblocks:pumice", {
+	description = "Pumice",
+	tiles = {"gloopblocks_pumice.png"},
 	groups = {cracky=3},
-	sounds = default.node_sound_defaults(),
+	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_craft({
-	output = "default:nyancat",
-	recipe = {
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-	}
+minetest.register_node("gloopblocks:pavement", {
+	description = "Pavement",
+	tiles = {"gloopblocks_pavement.png"},
+	groups = {cracky=3, oddly_breakable_by_hand=3},
+	sounds = default.node_sound_stone_defaults(),
 })
 
-minetest.register_craft({
-	output = "default:nyancat_rainbow",
-	recipe = {
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
+minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
+
+-- Stairsplus defs
+
+blocks = {
+	"cement",
+	"evil_block",
+	"basalt",
+	"pumice"
 	}
-})
+
+descriptions = {
+	"Cement",
+	"Evil",
+	"Basalt",
+	"Pumice",
+	}
+
+for i in ipairs(blocks) do
+	if blocks[i] == "evil_block" then light = 5 else light = 0 end
+	register_stair_slab_panel_micro("gloopblocks", blocks[i], "gloopblocks:"..blocks[i], {cracky=2}, {"gloopblocks_"..blocks[i]..".png"}, descriptions[i], "gloopblocks"..blocks[i], "facedir", light)
+	
+end
+
+register_gloopblocks_alias("gloopblocks", "evil", "evil_block")
+register_gloopblocks_alias("gloopblocks", "cement", "cement")
+
+-- Tools
 
 minetest.register_tool("gloopblocks:pick_cement", {
 	description = "Cement Pickaxe",
@@ -240,6 +208,116 @@ minetest.register_tool("gloopblocks:sword_evil", {
 			snappy={times={[1]=0.20, [2]=0.20, [3]=0.20}, uses=10, maxlevel=3},
 			choppy={times={[1]=0.20, [2]=0.20, [3]=0.20}, uses=10, maxlevel=3}
 		}
+	}
+})
+
+-- Other items
+
+minetest.register_craftitem("gloopblocks:wet_cement", {
+	description = "Wet Cement",
+	inventory_image = "gloopblocks_wet_cement.png",
+})
+
+minetest.register_craftitem("gloopblocks:evil_stick", {
+	description = "Evil Stick",
+	inventory_image = "gloopblocks_evil_stick.png",
+})
+
+-- Crafts
+
+minetest.register_craft( {
+	type = "shapeless",
+	output = "gloopblocks:rainbow_block",
+	recipe = {
+		"group:basecolor_red",
+		"group:excolor_orange",
+		"group:basecolor_yellow",
+		"group:basecolor_green",
+		"group:basecolor_blue",
+		"group:excolor_violet",
+		"default:stone",
+		"default:mese_crystal",
+	},
+})
+
+minetest.register_craft({
+	output = "default:nyancat",
+	recipe = {
+		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
+		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
+		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
+	}
+})
+
+minetest.register_craft({
+	output = "default:nyancat_rainbow",
+	recipe = {
+		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "gloopblocks:wet_cement",
+	recipe = {
+		"bucket:bucket_water",
+		"default:gravel",
+	},
+	replacements = {{'bucket:bucket_water', 'bucket:bucket_empty'},},
+})
+
+minetest.register_craft({
+	type = "cooking",
+	output = "gloopblocks:cement",
+	recipe = "gloopblocks:wet_cement",
+	cooktime = 8
+})
+
+minetest.register_craft({
+	output = "default:gravel 2",
+	recipe = {
+		{"gloopblocks:cement"},
+	},
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "gloopblocks:evil_stick",
+	recipe = {
+		"gloopores:kalite_lump",
+		"default:coal_lump",
+		"default:stick"
+	}
+})
+
+minetest.register_craft({
+	output = "gloopblocks:evil_block",
+	recipe = {
+		{"gloopblocks:evil_stick", "gloopblocks:evil_stick"},
+		{"gloopblocks:evil_stick", "gloopblocks:evil_stick"},
+	}
+})
+
+minetest.register_craft({
+	output = "gloopblocks:evil_stick 4",
+	recipe = {
+		{"gloopblocks:evil_block"}
+	}
+})
+
+minetest.register_craft({
+	output = "default:nyancat",
+	recipe = {
+		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
+		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
+		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
+	}
+})
+
+minetest.register_craft({
+	output = "default:nyancat_rainbow",
+	recipe = {
+		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
 	}
 })
 
@@ -341,6 +419,26 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = "gloopblocks:pavement 5",
+	recipe = {
+		{"gloopblocks:basalt",    "gloopblocks:wet_cement","gloopblocks:basalt"},
+		{"gloopblocks:wet_cement","gloopblocks:basalt",    "gloopblocks:wet_cement"},
+		{"gloopblocks:basalt",    "gloopblocks:wet_cement","gloopblocks:basalt"},
+	}
+})
+
+minetest.register_craft({
+	output = "gloopblocks:pavement 5",
+	recipe = {
+		{"gloopblocks:wet_cement","gloopblocks:basalt",    "gloopblocks:wet_cement"},
+		{"gloopblocks:basalt",    "gloopblocks:wet_cement","gloopblocks:basalt"},
+		{"gloopblocks:wet_cement","gloopblocks:basalt",    "gloopblocks:wet_cement"},
+	}
+})
+
+-- ABMs for various things
+
 minetest.register_abm({
 	nodenames = {"default:cobble"},
 	neighbors = {"default:water_source", "default:water_flowing"},
@@ -349,642 +447,6 @@ minetest.register_abm({
 	action = function(pos)
 		minetest.env:add_node (pos, {name = "default:mossycobble"})
 	end,
-})
-
-gloopblocks = {}
-
-function gloopblocks.register_stair(subname, recipeitem, groups, images, description, drop)
-		minetest.register_node("gloopblocks:stair_" .. subname, {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
-			},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
-			},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-
-		minetest.register_node(":stairs:stair_" .. subname, {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
-			},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
-			},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-
-		minetest.register_node("gloopblocks:stair_" .. subname .. "_inverted", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:stair_" .. drop .. "_inverted",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, 0, -0.5, 0.5, 0.5, 0.5},
-				{-0.5, -0.5, 0, 0.5, 0, 0.5},
-			},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, 0, -0.5, 0.5, 0.5, 0.5},
-				{-0.5, -0.5, 0, 0.5, 0, 0.5},
-			},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-		minetest.register_node("gloopblocks:stair_" .. subname .. "_wall", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:stair_" .. drop .. "_wall",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, 0, 0.5, 0.5, 0.5},
-				{-0.5, -0.5, -0.5, 0, 0.5, 0},
-			},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, 0, 0.5, 0.5, 0.5},
-				{-0.5, -0.5, -0.5, 0, 0.5, 0},
-			},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-		minetest.register_node("gloopblocks:stair_" .. subname .. "_wall_half", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:stair_" .. drop .. "_wall_half",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, 0, 0.5, 0, 0.5},
-				{-0.5, -0.5, -0.5, 0, 0, 0},
-			},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, 0, 0.5, 0, 0.5},
-				{-0.5, -0.5, -0.5, 0, 0, 0},
-			},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-		minetest.register_node("gloopblocks:stair_" .. subname .. "_wall_half_inverted", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:stair_" .. drop .. "_wall_half_inverted",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
-				{-0.5, 0, -0.5, 0, 0.5, 0},
-			},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
-				{-0.5, 0, -0.5, 0, 0.5, 0},
-			},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-		minetest.register_node("gloopblocks:stair_" .. subname .. "_inner", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:stair_" .. drop .. "_inner",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
-				{-0.5, 0, -0.5, 0, 0.5, 0},
-			},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0.5, 0.5, 0.5},
-				{-0.5, 0, -0.5, 0, 0.5, 0},
-			},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-		minetest.register_node("gloopblocks:stair_" .. subname .. "_outer", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:stair_" .. drop .. "_outer",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0, 0.5, 0.5},
-			},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {
-				{-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-				{-0.5, 0, 0, 0, 0.5, 0.5},
-			},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. " 8",
-		recipe = {
-			{recipeitem, "", ""},
-			{recipeitem, recipeitem, ""},
-			{recipeitem, recipeitem, recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. " 8",
-		recipe = {
-			{"", "", recipeitem},
-			{"", recipeitem, recipeitem},
-			{recipeitem, recipeitem, recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_inverted" .. " 8",
-		recipe = {
-			{recipeitem, recipeitem, recipeitem},
-			{recipeitem, recipeitem, ""},
-			{recipeitem, "", ""},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_inverted" .. " 8",
-		recipe = {
-			{recipeitem, recipeitem, recipeitem},
-			{"", recipeitem, recipeitem},
-			{"", "", recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_inverted" .. " 1",
-		recipe = {
-			{"gloopblocks:stair_" .. subname},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_inner" .. " 1",
-		recipe = {
-			{"gloopblocks:micro_" .. subname .. "_bottom", "gloopblocks:stair_" .. subname},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_outer 1",
-		recipe = {
-			{"gloopblocks:micro_" .. subname .. "_bottom"},
-			{"gloopblocks:slab_" .. subname},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_wall_half" .. " 1",
-		recipe = {
-			{"gloopblocks:stair_" .. subname .. "_wall"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_wall_half_inverted" .. " 1",
-		recipe = {
-			{"gloopblocks:stair_" .. subname .. "_wall_half"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_wall_half" .. " 1",
-		recipe = {
-			{"gloopblocks:stair_" .. subname .. "_wall_half_inverted"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_inverted" .. " 1",
-		recipe = {
-			{"gloopblocks:stair_" .. subname},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. " 1",
-		recipe = {
-			{"gloopblocks:stair_" .. subname .. "_inverted"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_wall" .. " 7",
-		recipe = {
-			{recipeitem, recipeitem, recipeitem},
-			{"", "", recipeitem},
-			{"", "", recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:stair_" .. subname .. "_wall" .. " 7",
-		recipe = {
-			{recipeitem, recipeitem, recipeitem},
-			{recipeitem, ""	, ""},
-			{recipeitem, "", ""},
-		},
-	})
-end
-
--- Node will be called gloopblocks:slab_<subname>
-function gloopblocks.register_slab(subname, recipeitem, groups, images, description, drop)
-	minetest.register_node("gloopblocks:slab_" .. subname, {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:slab_" .. drop,
-		paramtype = "light",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, -0.5, 0.5, 0, 0.5},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-	minetest.register_node("gloopblocks:slab_" .. subname .. "_inverted", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:slab_" .. drop .. "_inverted",
-		paramtype = "light",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, 0, -0.5, 0.5, 0.5, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, 0, -0.5, 0.5, 0.5, 0.5},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-	minetest.register_node("gloopblocks:slab_" .. subname .. "_wall", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:slab_" .. drop .. "_wall",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, 0, 0.5, 0.5, 0.5},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-
-	minetest.register_craft({
-		output = "gloopblocks:slab_" .. subname .. " 6",
-		recipe = {
-			{recipeitem, recipeitem, recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:slab_" .. subname .. "_wall" .. " 6",
-		recipe = {
-			{recipeitem},
-			{recipeitem},
-			{recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:slab_" .. subname .. "_inverted" .. " 1",
-		recipe = {
-			{"gloopblocks:slab_" .. subname},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:slab_" .. subname .. " 1",
-		recipe = {
-			{"gloopblocks:slab_" .. subname .. "_inverted"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = recipeitem .. " 1",
-		recipe = {
-			{"gloopblocks:slab_" .. subname},
-			{"gloopblocks:slab_" .. subname},
-		},
-	})
-
-	minetest.register_craft({
-		output = recipeitem .. " 1",
-		recipe = {
-			{"gloopblocks:slab_" .. subname .. "_inverted"},
-			{"gloopblocks:slab_" .. subname .. "_inverted"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = recipeitem .. " 1",
-		recipe = {
-			{"gloopblocks:slab_" .. subname .. "_wall", "gloopblocks:slab_" .. subname .. "_wall"},
-		},
-	})
-end
-
--- Node will be called gloopblocks:panel_<subname>
-function gloopblocks.register_panel(subname, recipeitem, groups, images, description, drop)
-	minetest.register_node("gloopblocks:panel_" .. subname .. "_bottom", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:panel_" .. drop .. "_bottom",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, 0, 0.5, 0, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, 0, 0.5, 0, 0.5},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-	minetest.register_node("gloopblocks:panel_" .. subname .. "_top", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:panel_" .. drop .. "_top",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, 0, 0, 0.5, 0.5, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, 0, 0, 0.5, 0.5, 0.5},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-	minetest.register_node("gloopblocks:panel_" .. subname .. "_vertical", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:panel_" .. drop .. "_vertical",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, 0, 0, 0.5, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, 0, 0, 0.5, 0.5},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:panel_" .. subname .. "_bottom" .. " 8",
-		recipe = {
-			{recipeitem, recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:panel_" .. subname .. "_vertical" .. " 8",
-		recipe = {
-			{recipeitem},
-			{recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:panel_" .. subname .. "_top" .. " 1",
-		recipe = {
-			{"gloopblocks:panel_" .. subname .. "_bottom"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:panel_" .. subname .. "_bottom" .. " 1",
-		recipe = {
-			{"gloopblocks:panel_" .. subname .. "_top"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:panel_" .. subname .. "_vertical" .. " 2",
-		recipe = {
-			{"gloopblocks:panel_" .. subname .. "_bottom"},
-			{"gloopblocks:panel_" .. subname .. "_bottom"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:panel_" .. subname .. "_bottom" .. " 2",
-		recipe = {
-			{"gloopblocks:panel_" .. subname .. "_vertical", "gloopblocks:panel_" .. subname .. "_vertical"},
-		},
-	})
-end
-
--- Node will be called gloopblocks:micro_<subname>
-function gloopblocks.register_micro(subname, recipeitem, groups, images, description, drop)
-	minetest.register_node("gloopblocks:micro_" .. subname .. "_bottom", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:micro_" .. drop .. "_bottom",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, 0, 0, 0, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, -0.5, 0, 0, 0, 0.5},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-	minetest.register_node("gloopblocks:micro_" .. subname .. "_top", {
-		description = description,
-		drawtype = "nodebox",
-		tiles = images,
-		drop = "gloopblocks:micro_" .. drop .. "_top",
-		paramtype = "light",
-		paramtype2 = "facedir",
-		is_ground_content = true,
-		groups = groups,
-		node_box = {
-			type = "fixed",
-			fixed = {-0.5, 0, 0, 0, 0.5, 0.5},
-		},
-		selection_box = {
-			type = "fixed",
-			fixed = {-0.5, 0, 0, 0, 0.5, 0.5},
-		},
-		sounds = default.node_sound_stone_defaults(),
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:micro_" .. subname .. "_bottom 8",
-		recipe = {
-			{"default:stick"},
-			{recipeitem},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:micro_" .. subname .. "_top 1",
-		recipe = {
-			{"gloopblocks:micro_" .. subname .. "_bottom"},
-		},
-	})
-	
-	minetest.register_craft({
-		output = "gloopblocks:micro_" .. subname .. "_bottom 1",
-		recipe = {
-			{"gloopblocks:micro_" .. subname .. "_top"},
-		},
-	})
-end
-
--- Nodes will be called gloopblocks:{stair,slab}_<subname>
-function gloopblocks.register_stair_and_slab_and_panel_and_micro(subname, recipeitem, groups, images, desc_stair, desc_slab, desc_panel, desc_micro, drop)
-	gloopblocks.register_stair(subname, recipeitem, groups, images, desc_stair, drop)
-	gloopblocks.register_slab(subname, recipeitem, groups, images, desc_slab, drop)
-	gloopblocks.register_panel(subname, recipeitem, groups, images, desc_panel, drop)
-	gloopblocks.register_micro(subname, recipeitem, groups, images, desc_micro, drop)
-end
-
-gloopblocks.register_stair_and_slab_and_panel_and_micro("cement", "gloopblocks:cement", {cracky=2}, {"gloopblocks_cement.png"}, "Cement Stairs", "Cement Slab", "Cement Panel", "Cement Microblock", "cement")
-gloopblocks.register_stair_and_slab_and_panel_and_micro("evil", "gloopblocks:evil_block", {cracky=3}, {"gloopblocks_evil_block.png"}, "Evil Stairs", "Evil Slab", "Evil Panel", "Evil Microblock", "evil")
-
-minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
-
-minetest.register_node("gloopblocks:basalt", {
-	description = "Basalt",
-	tiles = {"gloopblocks_basalt.png"},
-	groups = {cracky=2},
-	sounds = default.node_sound_stone_defaults(),
-})
-
-minetest.register_node("gloopblocks:pumice", {
-	description = "Pumice",
-	tiles = {"gloopblocks_pumice.png"},
-	groups = {cracky=3},
-	sounds = default.node_sound_stone_defaults(),
 })
 
 minetest.register_abm({
@@ -1007,29 +469,4 @@ minetest.register_abm({
 	end,
 })
 
-minetest.register_node("gloopblocks:pavement", {
-	description = "Pavement",
-	tiles = {"gloopblocks_pavement.png"},
-	groups = {cracky=3, oddly_breakable_by_hand=3},
-	sounds = default.node_sound_stone_defaults(),
-})
-
-minetest.register_craft({
-	output = "gloopblocks:pavement 5",
-	recipe = {
-		{"gloopblocks:basalt",    "gloopblocks:wet_cement","gloopblocks:basalt"},
-		{"gloopblocks:wet_cement","gloopblocks:basalt",    "gloopblocks:wet_cement"},
-		{"gloopblocks:basalt",    "gloopblocks:wet_cement","gloopblocks:basalt"},
-	}
-})
-
-minetest.register_craft({
-	output = "gloopblocks:pavement 5",
-	recipe = {
-		{"gloopblocks:wet_cement","gloopblocks:basalt",    "gloopblocks:wet_cement"},
-		{"gloopblocks:basalt",    "gloopblocks:wet_cement","gloopblocks:basalt"},
-		{"gloopblocks:wet_cement","gloopblocks:basalt",    "gloopblocks:wet_cement"},
-	}
-})
-
-
+print("Gloopblocks Loaded!")
