@@ -12,30 +12,36 @@ the register_gloopblocks_alias function is borrowed from stairsplus.
 
 -- Helper functions
 
-function register_gloopblocks_alias(modname, origname, newname)
-	minetest.register_alias(modname .. ":slab_" .. origname, "gloopblocks:slab_" .. newname)
-	minetest.register_alias(modname .. ":slab_" .. origname .. "_inverted", "gloopblocks:slab_" .. newname .. "_inverted")
-	minetest.register_alias(modname .. ":slab_" .. origname .. "_wall", "gloopblocks:slab_" .. newname .. "_wall")
-	minetest.register_alias(modname .. ":stair_" .. origname, "gloopblocks:stair_" .. newname)
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_inverted", "gloopblocks:stair_" .. newname .. "_inverted")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall", "gloopblocks:stair_" .. newname .. "_wall")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half", "gloopblocks:stair_" .. newname .. "_wall_half")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half_inverted", "gloopblocks:stair_" .. newname .. "_wall_half_inverted")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_half", "gloopblocks:stair_" .. newname .. "_half")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_half_inverted", "gloopblocks:stair_" .. newname .. "_half_inverted")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_right_half", "gloopblocks:stair_" .. newname .. "_right_half")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_right_half_inverted", "gloopblocks:stair_" .. newname .. "_right_half_inverted")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half", "gloopblocks:stair_" .. newname .. "_wall_half")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half_inverted", "gloopblocks:stair_" .. newname .. "_wall_half_inverted")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_inner", "gloopblocks:stair_" .. newname .. "_inner")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_inner_inverted", "gloopblocks:stair_" .. newname .. "_inner_inverted")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_outer", "gloopblocks:stair_" .. newname .. "_outer")
-	minetest.register_alias(modname .. ":stair_" .. origname .. "_outer_inverted", "gloopblocks:stair_" .. newname .. "_outer_inverted")
-	minetest.register_alias(modname .. ":panel_" .. origname .. "_bottom", "gloopblocks:panel_" .. newname .. "_bottom")
-	minetest.register_alias(modname .. ":panel_" .. origname .. "_top", "gloopblocks:panel_" .. newname .. "_top")
-	minetest.register_alias(modname .. ":panel_" .. origname .. "_vertical", "gloopblocks:panel_" .. newname .. "_vertical")
-	minetest.register_alias(modname .. ":micro_" .. origname .. "_bottom", "gloopblocks:micro_" .. newname .. "_bottom")
-	minetest.register_alias(modname .. ":micro_" .. origname .. "_top", "gloopblocks:micro_" .. newname .. "_top")
+function register_gloopblocks_alias(modname, origname, newmod, newname)
+	minetest.register_alias(modname .. ":slab_" .. origname, newmod..":slab_" .. newname)
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_inverted", newmod..":slab_" .. newname .. "_inverted")
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_wall", newmod..":slab_" .. newname .. "_wall")
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_quarter", newmod..":slab_" .. newname .. "_quarter")
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_quarter_inverted", newmod..":slab_" .. newname .. "_quarter_inverted")
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_quarter_wall", newmod..":slab_" .. newname .. "_quarter_wall")
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_three_quarter", newmod..":slab_" .. newname .. "_three_quarter")
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_three_quarter_inverted", newmod..":slab_" .. newname .. "_three_quarter_inverted")
+	minetest.register_alias(modname .. ":slab_" .. origname .. "_three_quarter_wall", newmod..":slab_" .. newname .. "_three_quarter_wall")
+	minetest.register_alias(modname .. ":stair_" .. origname, newmod..":stair_" .. newname)
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_inverted", newmod..":stair_" .. newname .. "_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall", newmod..":stair_" .. newname .. "_wall")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half", newmod..":stair_" .. newname .. "_wall_half")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half_inverted", newmod..":stair_" .. newname .. "_wall_half_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_half", newmod..":stair_" .. newname .. "_half")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_half_inverted", newmod..":stair_" .. newname .. "_half_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_right_half", newmod..":stair_" .. newname .. "_right_half")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_right_half_inverted", newmod..":stair_" .. newname .. "_right_half_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half", newmod..":stair_" .. newname .. "_wall_half")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_wall_half_inverted", newmod..":stair_" .. newname .. "_wall_half_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_inner", newmod..":stair_" .. newname .. "_inner")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_inner_inverted", newmod..":stair_" .. newname .. "_inner_inverted")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_outer", newmod..":stair_" .. newname .. "_outer")
+	minetest.register_alias(modname .. ":stair_" .. origname .. "_outer_inverted", newmod..":stair_" .. newname .. "_outer_inverted")
+	minetest.register_alias(modname .. ":panel_" .. origname .. "_bottom", newmod..":panel_" .. newname .. "_bottom")
+	minetest.register_alias(modname .. ":panel_" .. origname .. "_top", newmod..":panel_" .. newname .. "_top")
+	minetest.register_alias(modname .. ":panel_" .. origname .. "_vertical", newmod..":panel_" .. newname .. "_vertical")
+	minetest.register_alias(modname .. ":micro_" .. origname .. "_bottom", newmod..":micro_" .. newname .. "_bottom")
+	minetest.register_alias(modname .. ":micro_" .. origname .. "_top", newmod..":micro_" .. newname .. "_top")
 end
 
 -- Nodes
@@ -91,27 +97,20 @@ minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 -- Stairsplus defs
 
 blocks = {
-	"cement",
-	"evil_block",
-	"basalt",
-	"pumice"
-	}
-
-descriptions = {
-	"Cement",
-	"Evil",
-	"Basalt",
-	"Pumice",
-	}
+	{"Cement", "cement", "cement"},
+	{"Evil Block", "evil", "evil_block"},
+	{"Basalt", "basalt","basalt"},
+	{"Pumice", "pumice","pumice"},
+	{"Pavement", "pavement", "pavement"}
+}
 
 for i in ipairs(blocks) do
-	if blocks[i] == "evil_block" then light = 5 else light = 0 end
-	register_stair_slab_panel_micro("gloopblocks", blocks[i], "gloopblocks:"..blocks[i], {cracky=2}, {"gloopblocks_"..blocks[i]..".png"}, descriptions[i], "gloopblocks"..blocks[i], "facedir", light)
-	
+	if blocks[i][1] == "Evil Block" then light = 5 else light = 0 end
+	register_stair_slab_panel_micro("gloopblocks", blocks[i][3], "gloopblocks:"..blocks[i][3], {cracky=2, not_in_creative_inventory=1}, {"gloopblocks_"..blocks[i][3]..".png"}, blocks[i][1], "gloopblocks:"..blocks[i][3], "facedir", light)	
+	register_gloopblocks_alias("gloopblocks", blocks[i][2], "gloopblocks", blocks[i][3])
+	register_gloopblocks_alias("moreblocks", blocks[i][3], "gloopblocks", blocks[i][3])
+	table.insert(circular_saw.known_stairs, "gloopblocks:"..blocks[i][3])
 end
-
-register_gloopblocks_alias("gloopblocks", "evil", "evil_block")
-register_gloopblocks_alias("gloopblocks", "cement", "cement")
 
 -- Tools
 
