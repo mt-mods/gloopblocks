@@ -92,6 +92,21 @@ minetest.register_node("gloopblocks:pavement", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("gloopblocks:oerkki_block", {
+	description = "Oerkki Block",
+	paramtype2 = "facedir",
+	tiles = {
+		"gloopblocks_oerkkiblock_tb.png",
+		"gloopblocks_oerkkiblock_tb.png", 
+		"gloopblocks_oerkkiblock_sides.png", 
+		"gloopblocks_oerkkiblock_sides.png", 
+		"gloopblocks_oerkkiblock_sides.png",
+		"gloopblocks_oerkkiblock_front.png"
+	},
+	groups = {cracky=3, oddly_breakable_by_hand=3},
+	sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 
 -- Stairsplus defs
@@ -101,7 +116,7 @@ blocks = {
 	{"Evil Block", "evil", "evil_block"},
 	{"Basalt", "basalt","basalt"},
 	{"Pumice", "pumice","pumice"},
-	{"Pavement", "pavement", "pavement"}
+	{"Pavement", "pavement", "pavement"},
 }
 
 for i in ipairs(blocks) do
@@ -111,6 +126,26 @@ for i in ipairs(blocks) do
 	register_gloopblocks_alias("moreblocks", blocks[i][3], "gloopblocks", blocks[i][3])
 	table.insert(circular_saw.known_stairs, "gloopblocks:"..blocks[i][3])
 end
+
+register_stair_slab_panel_micro(
+	"gloopblocks",
+	"oerkki_block",
+	"gloopblocks:oerkki_block",
+	{cracky=2, not_in_creative_inventory=1},
+	{"gloopblocks_oerkkiblock_tb.png",
+	 "gloopblocks_oerkkiblock_tb.png", 
+	 "gloopblocks_oerkkiblock_sides.png", 
+	 "gloopblocks_oerkkiblock_sides.png", 
+	 "gloopblocks_oerkkiblock_sides.png",
+	 "gloopblocks_oerkkiblock_front.png"},
+	"Oerkki Block",
+	"gloopblocks:oerkki_block",
+	"facedir",
+	light
+)
+
+register_gloopblocks_alias("moreblocks", "oerkki_block", "gloopblocks", "oerkki_block")
+table.insert(circular_saw.known_stairs, "gloopblocks:oerkki_block")
 
 -- Tools
 
@@ -434,6 +469,26 @@ minetest.register_craft({
 		{"gloopblocks:basalt",    "gloopblocks:wet_cement","gloopblocks:basalt"},
 		{"gloopblocks:wet_cement","gloopblocks:basalt",    "gloopblocks:wet_cement"},
 	}
+})
+
+minetest.register_craft({
+	output = "gloopblocks:oerkki_block 2",
+	recipe = {
+		{"default:iron_lump", "default:coal_lump", "default:iron_lump"},
+		{"default:coal_lump", "default:bookshelf", "default:coal_lump"},
+		{"default:iron_lump", "default:coal_lump", "default:iron_lump"},
+	},
+	replacements = { { "default:bookshelf", "default:book 3" } }
+})
+
+minetest.register_craft({
+	output = "gloopblocks:oerkki_block 2",
+	recipe = {
+		{"default:coal_lump", "default:iron_lump", "default:coal_lump"},
+		{"default:iron_lump", "default:bookshelf", "default:iron_lump"},
+		{"default:coal_lump", "default:iron_lump", "default:coal_lump"},
+	},
+	replacements = { { "default:bookshelf", "default:book 3" } }
 })
 
 -- ABMs for various things
