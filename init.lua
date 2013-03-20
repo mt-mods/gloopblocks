@@ -107,6 +107,7 @@ minetest.register_node("gloopblocks:oerkki_block", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_alias("moreblocks:oerkkiblock", "gloopblocks:oerkki_block")
 minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 
 -- Stairsplus defs
