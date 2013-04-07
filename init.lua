@@ -110,6 +110,8 @@ minetest.register_node("gloopblocks:oerkki_block", {
 minetest.register_alias("moreblocks:oerkkiblock", "gloopblocks:oerkki_block")
 minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 
+register_gloopblocks_alias("stairsplus", "obsidian", "moreblocks", "obsidian")
+
 -- Stairsplus defs
 
 blocks = {
@@ -147,23 +149,6 @@ register_stair_slab_panel_micro(
 
 register_gloopblocks_alias("moreblocks", "oerkki_block", "gloopblocks", "oerkki_block")
 table.insert(circular_saw.known_stairs, "gloopblocks:oerkki_block")
-
--- Obsidian stairs et.al got dropped from technic.  Added here.
-
-register_stair_slab_panel_micro(
-	"stairsplus",
-	"obsidian",
-	"default:obsidian",
-	{cracky=2, not_in_creative_inventory=1},
-	{"default_obsidian.png"},
-	"Obsidian",
-	"default:obsidian",
-	"facedir",
-	light
-)
-
-register_gloopblocks_alias("moreblocks", "obsidian", "stairsplus", "obsidian")
-table.insert(circular_saw.known_stairs, "default:obsidian")
 
 -- Tools
 
