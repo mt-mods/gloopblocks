@@ -144,7 +144,7 @@ register_stair_slab_panel_micro(
 	"Oerkki Block",
 	"gloopblocks:oerkki_block",
 	"facedir",
-	light
+	0
 )
 
 register_gloopblocks_alias("moreblocks", "oerkki_block", "gloopblocks", "oerkki_block")
