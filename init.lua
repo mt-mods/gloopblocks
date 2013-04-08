@@ -124,7 +124,7 @@ blocks = {
 
 for i in ipairs(blocks) do
 	if blocks[i][1] == "Evil Block" then light = 5 else light = 0 end
-	register_stair_slab_panel_micro("gloopblocks", blocks[i][3], "gloopblocks:"..blocks[i][3], {cracky=2, not_in_creative_inventory=1}, {"gloopblocks_"..blocks[i][3]..".png"}, blocks[i][1], "gloopblocks:"..blocks[i][3], "facedir", light)	
+	register_stair_slab_panel_micro("gloopblocks", blocks[i][3], "gloopblocks:"..blocks[i][3], {cracky=2, not_in_creative_inventory=1}, {"gloopblocks_"..blocks[i][3]..".png"}, blocks[i][1], blocks[i][3], "facedir", light)	
 	register_gloopblocks_alias("gloopblocks", blocks[i][2], "gloopblocks", blocks[i][3])
 	register_gloopblocks_alias("moreblocks", blocks[i][3], "gloopblocks", blocks[i][3])
 	table.insert(circular_saw.known_stairs, "gloopblocks:"..blocks[i][3])
@@ -142,7 +142,7 @@ register_stair_slab_panel_micro(
 	 "gloopblocks_oerkkiblock_sides.png",
 	 "gloopblocks_oerkkiblock_front.png"},
 	"Oerkki Block",
-	"gloopblocks:oerkki_block",
+	"oerkki_block",
 	"facedir",
 	0
 )
