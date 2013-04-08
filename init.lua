@@ -107,6 +107,13 @@ minetest.register_node("gloopblocks:oerkki_block", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("gloopblocks:stone_brick_mossy", {
+        description = "Mossy Stone Brick",
+        tiles = {"gloopblocks_stone_brick_mossy.png"},
+        groups = {cracky=3, stone=1},
+        sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_alias("moreblocks:oerkkiblock", "gloopblocks:oerkki_block")
 minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 
@@ -149,6 +156,20 @@ register_stair_slab_panel_micro(
 
 register_gloopblocks_alias("moreblocks", "oerkki_block", "gloopblocks", "oerkki_block")
 table.insert(circular_saw.known_stairs, "gloopblocks:oerkki_block")
+
+register_stair_slab_panel_micro(
+	"gloopblocks",
+	"stone_brick_mossy",
+	"gloopblocks:stone_brick_mossy",
+	{cracky=1, not_in_creative_inventory=1},
+	{"gloopblocks_stone_brick_mossy.png"},
+	"Mossy Stone Brick",
+	"stone_brick_mossy",
+	"facedir",
+	0
+)
+
+table.insert(circular_saw.known_stairs, "gloopblocks:stone_brick_mossy")
 
 -- Tools
 
