@@ -38,10 +38,10 @@ function register_gloopblocks_alias(modname, origname, newmod, newname)
 	minetest.register_alias(modname .. ":stair_" .. origname .. "_inner_inverted", newmod..":stair_" .. newname .. "_inner_inverted")
 	minetest.register_alias(modname .. ":stair_" .. origname .. "_outer", newmod..":stair_" .. newname .. "_outer")
 	minetest.register_alias(modname .. ":stair_" .. origname .. "_outer_inverted", newmod..":stair_" .. newname .. "_outer_inverted")
-	minetest.register_alias(modname .. ":panel_" .. origname .. "_bottom", newmod..":panel_" .. newname .. "_bottom")
+	minetest.register_alias(modname .. ":panel_" .. origname .. "_bottom", newmod..":panel_" .. newname)
 	minetest.register_alias(modname .. ":panel_" .. origname .. "_top", newmod..":panel_" .. newname .. "_top")
 	minetest.register_alias(modname .. ":panel_" .. origname .. "_vertical", newmod..":panel_" .. newname .. "_vertical")
-	minetest.register_alias(modname .. ":micro_" .. origname .. "_bottom", newmod..":micro_" .. newname .. "_bottom")
+	minetest.register_alias(modname .. ":micro_" .. origname .. "_bottom", newmod..":micro_" .. newname)
 	minetest.register_alias(modname .. ":micro_" .. origname .. "_top", newmod..":micro_" .. newname .. "_top")
 end
 
@@ -132,7 +132,7 @@ blocks = {
 
 for i in ipairs(blocks) do
 	if blocks[i][1] == "Evil Block" then light = 5 else light = 0 end
-	register_stair_slab_panel_micro("gloopblocks", blocks[i][3], "gloopblocks:"..blocks[i][3], {cracky=2, not_in_creative_inventory=1}, {"gloopblocks_"..blocks[i][3]..".png"}, blocks[i][1], blocks[i][3], "facedir", light)	
+	register_stair_slab_panel_micro("gloopblocks", blocks[i][3], "gloopblocks:"..blocks[i][3], {cracky=2, not_in_creative_inventory=1}, {"gloopblocks_"..blocks[i][3]..".png"}, blocks[i][1], blocks[i][3], light)	
 	register_gloopblocks_alias("gloopblocks", blocks[i][2], "gloopblocks", blocks[i][3])
 	register_gloopblocks_alias("moreblocks", blocks[i][3], "gloopblocks", blocks[i][3])
 	table.insert(circular_saw.known_stairs, "gloopblocks:"..blocks[i][3])
@@ -151,7 +151,6 @@ register_stair_slab_panel_micro(
 	 "gloopblocks_oerkkiblock_front.png"},
 	"Oerkki Block",
 	"oerkki_block",
-	"facedir",
 	0
 )
 
