@@ -136,7 +136,7 @@ register_gloopblocks_alias("stairsplus", "obsidian", "moreblocks", "obsidian")
 
 -- Stairsplus defs
 
-blocks = {
+local blocks = {
 	{"Cement", "cement", "cement"},
 	{"Evil Block", "evil", "evil_block"},
 	{"Basalt", "basalt","basalt"},
@@ -167,7 +167,6 @@ register_stair_slab_panel_micro(
 	"oerkki_block",
 	0
 )
-
 register_gloopblocks_alias("moreblocks", "oerkki_block", "gloopblocks", "oerkki_block")
 table.insert(circular_saw.known_stairs, "gloopblocks:oerkki_block")
 
@@ -182,8 +181,34 @@ register_stair_slab_panel_micro(
 	"facedir",
 	0
 )
-
 table.insert(circular_saw.known_stairs, "gloopblocks:stone_brick_mossy")
+
+register_stair_slab_panel_micro(
+	"gloopblocks",
+	"cobble_road",
+	"gloopblocks:cobble_road",
+	{cracky=3, stone=1, not_in_creative_inventory=1},
+	{"gloopblocks_cobble_road.png"},
+	"Cobblestone Roadbed",
+	"cobble_road",
+	"facedir",
+	0
+)
+table.insert(circular_saw.known_stairs, "gloopblocks:cobble_road")
+
+register_stair_slab_panel_micro(
+	"gloopblocks",
+	"cobble_road_mossy",
+	"gloopblocks:cobble_road_mossy",
+	{cracky=3, stone=1, not_in_creative_inventory=1},
+	{"gloopblocks_cobble_road_mossy.png"},
+	"Mossy Cobblestone Roadbed",
+	"cobble_road_mossy",
+	"facedir",
+	0
+)
+table.insert(circular_saw.known_stairs, "gloopblocks:cobble_road_mossy")
+
 
 -- Tools
 
