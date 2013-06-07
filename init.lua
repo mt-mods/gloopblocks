@@ -115,6 +115,20 @@ minetest.register_node("gloopblocks:stone_brick_mossy", {
         sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("gloopblocks:cobble_road", {
+        description = "Cobblestone Road Bed",
+        tiles = {"gloopblocks_cobble_road.png"},
+        groups = {cracky=3, stone=1},
+        sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("gloopblocks:cobble_road_mossy", {
+        description = "Mossy Cobblestone Road Bed",
+        tiles = {"gloopblocks_cobble_road_mossy.png"},
+        groups = {cracky=3, stone=1},
+        sounds = default.node_sound_stone_defaults(),
+})
+
 minetest.register_alias("moreblocks:oerkkiblock", "gloopblocks:oerkki_block")
 minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 
@@ -281,7 +295,7 @@ minetest.register_craftitem("gloopblocks:evil_stick", {
 	inventory_image = "gloopblocks_evil_stick.png",
 })
 
--- ABMs for mossy cobble and mossy brick
+-- ABMs for mossy objects
 
 minetest.register_abm({
 	nodenames = {"default:cobble"},
@@ -290,6 +304,17 @@ minetest.register_abm({
 	chance = 20,
 	action = function(pos)
 		minetest.env:add_node (pos, {name = "default:mossycobble"})
+	end,
+})
+
+minetest.register_abm({
+	nodenames = {"gloopblocks:cobble_road"},
+	neighbors = {"default:water_source", "default:water_flowing"},
+	interval = 30,
+	chance = 20,
+	action = function(pos)
+		minetest.env:add_node (pos, {name = "gloopblocks:cobble_road_mossy"})
+
 	end,
 })
 

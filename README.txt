@@ -63,3 +63,10 @@ Other useful stuff:
   you're using this along with the standard minetest_game repository dated
   March 9 or later, this function no longer works, because the game provides a
   similar, less capable function.
+
+Notes:
+------
+
+The cobblestone and mossy cobblestone road bed textures were derived from:
+http://opengameart.org/content/rpg-tiles-cobble-stone-paths-town-objects
+...and the default grass texture that comes with minetest_game.

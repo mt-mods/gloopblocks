@@ -255,3 +255,39 @@ minetest.register_craft({
 		"default:grass_1"
 	}
 })
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "gloopblocks:cobble_road 5",
+	recipe = {
+		"default:cobble",
+		"default:cobble",
+		"default:cobble",
+		"default:cobble",
+		"gloopblocks:pavement"
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "gloopblocks:cobble_road_mossy 2",
+	recipe = {
+		"gloopblocks:cobble_road",
+		"gloopblocks:cobble_road",
+		"default:junglegrass",
+		"default:junglegrass"
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "gloopblocks:cobble_road_mossy 2",
+	recipe = {
+		"gloopblocks:cobble_road",
+		"gloopblocks:cobble_road",
+		"default:grass_1",
+		"default:grass_1",
+		"default:grass_1",
+		"default:grass_1"
+	}
+})
