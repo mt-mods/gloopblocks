@@ -322,36 +322,64 @@ minetest.register_craftitem("gloopblocks:evil_stick", {
 
 -- ABMs for mossy objects
 
-minetest.register_abm({
-	nodenames = {"default:cobble"},
-	neighbors = {"default:water_source", "default:water_flowing"},
-	interval = 30,
-	chance = 20,
-	action = function(pos)
-		minetest.env:add_node (pos, {name = "default:mossycobble"})
-	end,
-})
+local mossyobjects={
+	{ "default:cobble", 				"default:mossycobble" },
+	{ "default:stair_cobble", 			"default:stair_mossycobble" },
+	{ "default:slab_cobble", 			"default:slab_mossycobble" },
+	{ "default:slab_cobbleupside_down", 		"default:slab_mossycobbleupside_down" },
+	{ "moreblocks:stair_cobble", 			"moreblocks:stair_mossycobble" },
+	{ "moreblocks:stair_cobble_inner", 		"moreblocks:stair_mossycobble_inner" },
+	{ "moreblocks:stair_cobble_outer", 		"moreblocks:stair_mossycobble_outer" },
+	{ "moreblocks:stair_cobble_half", 		"moreblocks:stair_mossycobble_half" },
+	{ "moreblocks:slab_cobble_quarter", 		"moreblocks:slab_mossycobble_quarter" },
+	{ "moreblocks:slab_cobble", 			"moreblocks:slab_mossycobble" },
+	{ "moreblocks:slab_cobble_three_quarter", 	"moreblocks:slab_mossycobble_three_quarter" },
+	{ "moreblocks:panel_cobble", 			"moreblocks:panel_mossycobble" },
+	{ "moreblocks:micro_cobble", 			"moreblocks:micro_mossycobble" },
+	{ "moreblocks:stair_cobble_alt", 		"moreblocks:stair_mossycobble_alt" },
 
-minetest.register_abm({
-	nodenames = {"gloopblocks:cobble_road"},
-	neighbors = {"default:water_source", "default:water_flowing"},
-	interval = 30,
-	chance = 20,
-	action = function(pos)
-		minetest.env:add_node (pos, {name = "gloopblocks:cobble_road_mossy"})
+	{ "gloopblocks:cobble_road", 			"gloopblocks:cobble_road_mossy" },
+	{ "gloopblocks:stair_cobble_road", 		"gloopblocks:stair_cobble_road_mossy" },
+	{ "gloopblocks:slab_cobble_road", 		"gloopblocks:slab_cobble_road_mossy" },
+	{ "gloopblocks:stair_cobble_road", 		"gloopblocks:stair_cobble_road_mossy" },
+	{ "gloopblocks:stair_cobble_road_inner", 	"gloopblocks:stair_cobble_road_mossy_inner" },
+	{ "gloopblocks:stair_cobble_road_outer", 	"gloopblocks:stair_cobble_road_mossy_outer" },
+	{ "gloopblocks:stair_cobble_road_half", 	"gloopblocks:stair_cobble_road_mossy_half" },
+	{ "gloopblocks:slab_cobble_road_quarter", 	"gloopblocks:slab_cobble_road_mossy_quarter" },
+	{ "gloopblocks:slab_cobble_road", 		"gloopblocks:slab_cobble_road_mossy" },
+	{ "gloopblocks:slab_cobble_road_three_quarter",	"gloopblocks:slab_cobble_road_mossy_three_quarter" },
+	{ "gloopblocks:panel_cobble_road", 		"gloopblocks:panel_cobble_road_mossy" },
+	{ "gloopblocks:micro_cobble_road", 		"gloopblocks:micro_cobble_road_mossy" },
+	{ "gloopblocks:stair_cobble_road_alt", 		"gloopblocks:stair_cobble_road_mossy_alt" },
 
-	end,
-})
+	{ "default:stonebrick", 			"gloopblocks:stone_brick_mossy" },
+	{ "default:stair_stonebrick", 			"gloopblocks:stair_stone_brick_mossy" },
+	{ "default:slab_stonebrick", 			"gloopblocks:slab_stone_brick_mossy" },
+	{ "default:slab_stonebrickupside_down", 	"gloopblocks:slab_stone_brick_mossyupside_down" },
+	{ "moreblocks:stair_stonebrick", 		"gloopblocks:stair_stone_brick_mossy" },
+	{ "moreblocks:stair_stonebrick_inner", 		"gloopblocks:stair_stone_brick_mossy_inner" },
+	{ "moreblocks:stair_stonebrick_outer", 		"gloopblocks:stair_stone_brick_mossy_outer" },
+	{ "moreblocks:stair_stonebrick_half", 		"gloopblocks:stair_stone_brick_mossy_half" },
+	{ "moreblocks:slab_stonebrick_quarter", 	"gloopblocks:slab_stone_brick_mossy_quarter" },
+	{ "moreblocks:slab_stonebrick", 		"gloopblocks:slab_stone_brick_mossy" },
+	{ "moreblocks:slab_stonebrick_three_quarter",	"gloopblocks:slab_stone_brick_mossy_three_quarter" },
+	{ "moreblocks:panel_stonebrick", 		"gloopblocks:panel_stone_brick_mossy" },
+	{ "moreblocks:micro_stonebrick", 		"gloopblocks:micro_stone_brick_mossy" },
+	{ "moreblocks:stair_stonebrick_alt", 		"gloopblocks:stair_stone_brick_mossy_alt" },
+}
 
-minetest.register_abm({
-	nodenames = {"default:stonebrick"},
-	neighbors = {"default:water_source", "default:water_flowing"},
-	interval = 30,
-	chance = 20,
-	action = function(pos)
-		minetest.env:add_node (pos, {name = "gloopblocks:stone_brick_mossy"})
-	end,
-})
+for i in ipairs(mossyobjects) do
+	minetest.register_abm({
+		nodenames = { mossyobjects[i][1] },
+		neighbors = {"default:water_source", "default:water_flowing"},
+		interval = 120,
+		chance = 50,
+		action = function(pos)
+			fdir = minetest.env:get_node(pos).param2
+			minetest.env:add_node(pos, {name = mossyobjects[i][2], param2 = fdir})
+		end,
+	})
+end
 
 -- Hook into the default lavacooling function to generate basalt and pumice
 
