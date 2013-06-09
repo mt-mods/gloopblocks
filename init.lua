@@ -406,9 +406,11 @@ for i in ipairs(mossyobjects) do
 		neighbors = {"default:water_source", "default:water_flowing"},
 		interval = 120,
 		chance = 50,
-		action = function(pos)
-			fdir = minetest.env:get_node(pos).param2
-			minetest.env:add_node(pos, {name = mossyobjects[i][2], param2 = fdir})
+		action = function(pos, node)
+			if minetest.env:find_node_near(pos, 2, "air") then
+				fdir = node.param2
+				minetest.env:add_node(pos, {name = mossyobjects[i][2], param2 = fdir})
+			end
 		end,
 	})
 end
