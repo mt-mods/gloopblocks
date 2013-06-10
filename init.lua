@@ -120,6 +120,7 @@ minetest.register_node("gloopblocks:stone_mossy", {
         tiles = {"gloopblocks_stone_mossy.png"},
         groups = {cracky=3, stone=1},
         sounds = default.node_sound_stone_defaults(),
+	drop = "default:mossycobble"
 })
 
 minetest.register_node("gloopblocks:cobble_road", {

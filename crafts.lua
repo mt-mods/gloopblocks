@@ -291,3 +291,27 @@ minetest.register_craft({
 		"default:grass_1"
 	}
 })
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "gloopblocks:stone_mossy 2",
+	recipe = {
+		"default:stone",
+		"default:stone",
+		"default:junglegrass",
+		"default:junglegrass"
+	}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "gloopblocks:stone_mossy 2",
+	recipe = {
+		"default:stone",
+		"default:stone",
+		"default:grass_1",
+		"default:grass_1",
+		"default:grass_1",
+		"default:grass_1"
+	}
+})
