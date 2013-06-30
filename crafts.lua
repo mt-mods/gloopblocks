@@ -49,12 +49,13 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "default:gravel 2",
+	output = "default:gravel",
 	recipe = {
 		{"gloopblocks:cement"},
 	},
 })
 
+if minetest.get_modpath("glooptest") == true or minetest.get_modpath("gloopores") == true then
 minetest.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:evil_stick",
@@ -64,6 +65,17 @@ minetest.register_craft({
 		"default:stick"
 	}
 })
+else
+minetest.register_craft({
+	type = "shapeless",
+	output = "gloopblocks:evil_stick",
+	recipe = {
+		"default:gold_ingot",
+		"default:coal_lump",
+		"default:stick"
+	}
+})
+end
 
 minetest.register_craft({
 	output = "gloopblocks:evil_block",
