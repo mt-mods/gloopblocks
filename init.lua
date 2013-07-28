@@ -140,95 +140,126 @@ minetest.register_node("gloopblocks:cobble_road_mossy", {
 minetest.register_alias("moreblocks:oerkkiblock", "gloopblocks:oerkki_block")
 minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 
-register_gloopblocks_alias("stairsplus", "obsidian", "moreblocks", "obsidian")
-
 -- Stairsplus defs
 
-local blocks = {
-	{"Cement", "cement", "cement"},
-	{"Evil Block", "evil", "evil_block"},
-	{"Basalt", "basalt","basalt"},
-	{"Pumice", "pumice","pumice"},
-	{"Pavement", "pavement", "pavement"},
-}
+if minetest.get_modpath("moreblocks") then
 
-for i in ipairs(blocks) do
-	if blocks[i][1] == "Evil Block" then light = 5 else light = 0 end
-	register_stair_slab_panel_micro("gloopblocks", blocks[i][3], "gloopblocks:"..blocks[i][3], {cracky=2, not_in_creative_inventory=1}, {"gloopblocks_"..blocks[i][3]..".png"}, blocks[i][1], blocks[i][3], light)	
-	register_gloopblocks_alias("gloopblocks", blocks[i][2], "gloopblocks", blocks[i][3])
-	register_gloopblocks_alias("moreblocks", blocks[i][3], "gloopblocks", blocks[i][3])
-	table.insert(circular_saw.known_stairs, "gloopblocks:"..blocks[i][3])
+	register_gloopblocks_alias("stairsplus", "obsidian", "moreblocks", "obsidian")
+
+	local blocks = {
+		{"Cement", "cement", "cement"},
+		{"Evil Block", "evil", "evil_block"},
+		{"Basalt", "basalt","basalt"},
+		{"Pumice", "pumice","pumice"},
+		{"Pavement", "pavement", "pavement"},
+	}
+
+	for i in ipairs(blocks) do
+		if blocks[i][1] == "Evil Block" then light = 5 else light = 0 end
+		register_stair_slab_panel_micro("gloopblocks", blocks[i][3], "gloopblocks:"..blocks[i][3], {cracky=2, not_in_creative_inventory=1}, {"gloopblocks_"..blocks[i][3]..".png"}, blocks[i][1], blocks[i][3], light)	
+		register_gloopblocks_alias("gloopblocks", blocks[i][2], "gloopblocks", blocks[i][3])
+		register_gloopblocks_alias("moreblocks", blocks[i][3], "gloopblocks", blocks[i][3])
+		table.insert(circular_saw.known_stairs, "gloopblocks:"..blocks[i][3])
+	end
+
+	register_stair_slab_panel_micro(
+		"gloopblocks",
+		"oerkki_block",
+		"gloopblocks:oerkki_block",
+		{cracky=2, not_in_creative_inventory=1},
+		{"gloopblocks_oerkkiblock_tb.png",
+		 "gloopblocks_oerkkiblock_tb.png", 
+		 "gloopblocks_oerkkiblock_sides.png", 
+		 "gloopblocks_oerkkiblock_sides.png", 
+		 "gloopblocks_oerkkiblock_sides.png",
+		 "gloopblocks_oerkkiblock_front.png"},
+		"Oerkki Block",
+		"oerkki_block",
+		0
+	)
+	register_gloopblocks_alias("moreblocks", "oerkki_block", "gloopblocks", "oerkki_block")
+	table.insert(circular_saw.known_stairs, "gloopblocks:oerkki_block")
+
+	register_stair_slab_panel_micro(
+		"gloopblocks",
+		"stone_brick_mossy",
+		"gloopblocks:stone_brick_mossy",
+		{cracky=1, not_in_creative_inventory=1},
+		{"gloopblocks_stone_brick_mossy.png"},
+		"Mossy Stone Brick",
+		"stone_brick_mossy",
+		0
+	)
+	table.insert(circular_saw.known_stairs, "gloopblocks:stone_brick_mossy")
+
+	register_stair_slab_panel_micro(
+		"gloopblocks",
+		"stone_mossy",
+		"gloopblocks:stone_mossy",
+		{cracky=1, not_in_creative_inventory=1},
+		{"gloopblocks_stone_mossy.png"},
+		"Mossy Stone",
+		"stone_mossy",
+		0
+	)
+	table.insert(circular_saw.known_stairs, "gloopblocks:stone_mossy")
+
+	register_stair_slab_panel_micro(
+		"gloopblocks",
+		"cobble_road",
+		"gloopblocks:cobble_road",
+		{cracky=3, stone=1, not_in_creative_inventory=1},
+		{"gloopblocks_cobble_road.png"},
+		"Cobblestone Roadbed",
+		"cobble_road",
+		0
+	)
+	table.insert(circular_saw.known_stairs, "gloopblocks:cobble_road")
+
+	register_stair_slab_panel_micro(
+		"gloopblocks",
+		"cobble_road_mossy",
+		"gloopblocks:cobble_road_mossy",
+		{cracky=3, stone=1, not_in_creative_inventory=1},
+		{"gloopblocks_cobble_road_mossy.png"},
+		"Mossy Cobblestone Roadbed",
+		"cobble_road_mossy",
+		0
+	)
+	table.insert(circular_saw.known_stairs, "gloopblocks:cobble_road_mossy")
+
+	local colorlist = {
+		{"white",      "White"},
+		{"grey",       "Grey"},
+		{"black",      "Black"},
+		{"red",        "Red"},
+		{"yellow",     "Yellow"},
+		{"green",      "Green"},
+		{"cyan",       "Cyan"},
+		{"blue",       "Blue"},
+		{"magenta",    "Magenta"},
+		{"orange",     "Orange"},
+		{"violet",     "Violet"},
+		{"brown",      "Brown"},
+		{"pink",       "Pink"},
+		{"dark_grey",  "Dark Grey"},
+		{"dark_green", "Dark Green"},
+	}
+
+	for i in ipairs(colorlist) do
+		local color = colorlist[i][1]
+		local colordesc = colorlist[i][2]
+
+		register_stair_slab_panel_micro( "wool", color, "wool:"..color,
+			{ snappy=2, choppy=2, oddly_breakable_by_hand=3, flammable=3, wool=1, not_in_creative_inventory=1 },
+			{ "wool_"..color..".png" },
+			colordesc.." Wool",
+			"wool:"..color,
+			0
+		)
+		table.insert(circular_saw.known_stairs, "wool:"..color)
+	end
 end
-
-register_stair_slab_panel_micro(
-	"gloopblocks",
-	"oerkki_block",
-	"gloopblocks:oerkki_block",
-	{cracky=2, not_in_creative_inventory=1},
-	{"gloopblocks_oerkkiblock_tb.png",
-	 "gloopblocks_oerkkiblock_tb.png", 
-	 "gloopblocks_oerkkiblock_sides.png", 
-	 "gloopblocks_oerkkiblock_sides.png", 
-	 "gloopblocks_oerkkiblock_sides.png",
-	 "gloopblocks_oerkkiblock_front.png"},
-	"Oerkki Block",
-	"oerkki_block",
-	0
-)
-register_gloopblocks_alias("moreblocks", "oerkki_block", "gloopblocks", "oerkki_block")
-table.insert(circular_saw.known_stairs, "gloopblocks:oerkki_block")
-
-register_stair_slab_panel_micro(
-	"gloopblocks",
-	"stone_brick_mossy",
-	"gloopblocks:stone_brick_mossy",
-	{cracky=1, not_in_creative_inventory=1},
-	{"gloopblocks_stone_brick_mossy.png"},
-	"Mossy Stone Brick",
-	"stone_brick_mossy",
-	"facedir",
-	0
-)
-table.insert(circular_saw.known_stairs, "gloopblocks:stone_brick_mossy")
-
-register_stair_slab_panel_micro(
-	"gloopblocks",
-	"stone_mossy",
-	"gloopblocks:stone_mossy",
-	{cracky=1, not_in_creative_inventory=1},
-	{"gloopblocks_stone_mossy.png"},
-	"Mossy Stone",
-	"stone_mossy",
-	"facedir",
-	0
-)
-table.insert(circular_saw.known_stairs, "gloopblocks:stone_mossy")
-
-register_stair_slab_panel_micro(
-	"gloopblocks",
-	"cobble_road",
-	"gloopblocks:cobble_road",
-	{cracky=3, stone=1, not_in_creative_inventory=1},
-	{"gloopblocks_cobble_road.png"},
-	"Cobblestone Roadbed",
-	"cobble_road",
-	"facedir",
-	0
-)
-table.insert(circular_saw.known_stairs, "gloopblocks:cobble_road")
-
-register_stair_slab_panel_micro(
-	"gloopblocks",
-	"cobble_road_mossy",
-	"gloopblocks:cobble_road_mossy",
-	{cracky=3, stone=1, not_in_creative_inventory=1},
-	{"gloopblocks_cobble_road_mossy.png"},
-	"Mossy Cobblestone Roadbed",
-	"cobble_road_mossy",
-	"facedir",
-	0
-)
-table.insert(circular_saw.known_stairs, "gloopblocks:cobble_road_mossy")
 
 
 -- Tools
