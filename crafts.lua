@@ -55,26 +55,40 @@ minetest.register_craft({
 	},
 })
 
-if minetest.get_modpath("glooptest") or minetest.get_modpath("gloopores") then
-minetest.register_craft({
-	type = "shapeless",
-	output = "gloopblocks:evil_stick",
-	recipe = {
-		"gloopores:kalite_lump",
-		"default:coal_lump",
-		"default:stick"
-	}
-})
+
+if minetest.get_modpath("glooptest") then
+
+	minetest.register_craft({
+		type = "shapeless",
+		output = "gloopblocks:evil_stick",
+		recipe = {
+			"glooptest:kalite_lump",
+			"default:coal_lump",
+			"default:stick"
+		}
+	})
+
+elseif minetest.get_modpath("gloopores") then
+
+	minetest.register_craft({
+		type = "shapeless",
+		output = "gloopblocks:evil_stick",
+		recipe = {
+			"gloopores:kalite_lump",
+			"default:coal_lump",
+			"default:stick"
+		}
+	})
 else
-minetest.register_craft({
-	type = "shapeless",
-	output = "gloopblocks:evil_stick",
-	recipe = {
-		"default:gold_ingot",
-		"default:coal_lump",
-		"default:stick"
-	}
-})
+	minetest.register_craft({
+		type = "shapeless",
+		output = "gloopblocks:evil_stick",
+		recipe = {
+			"default:gold_ingot",
+			"default:coal_lump",
+			"default:stick"
+		}
+	})
 end
 
 minetest.register_craft({
