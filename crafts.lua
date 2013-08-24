@@ -55,7 +55,7 @@ minetest.register_craft({
 	},
 })
 
-if minetest.get_modpath("glooptest") == true or minetest.get_modpath("gloopores") == true then
+if minetest.get_modpath("glooptest") or minetest.get_modpath("gloopores") then
 minetest.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:evil_stick",
