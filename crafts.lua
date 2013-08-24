@@ -93,22 +93,6 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
-	output = "default:nyancat",
-	recipe = {
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-	}
-})
-
-minetest.register_craft({
-	output = "default:nyancat_rainbow",
-	recipe = {
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-	}
-})
-
-minetest.register_craft({
 	output = "gloopblocks:pick_cement",
 	recipe = {
 		{"gloopblocks:cement", "gloopblocks:cement", "gloopblocks:cement"},
