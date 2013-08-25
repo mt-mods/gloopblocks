@@ -100,6 +100,15 @@ minetest.register_craft({
 })
 
 minetest.register_craft({
+	output = "gloopblocks:scaffolding 12",
+		recipe = {
+		{"default:stick", "group:wood", "default:stick"},
+		{"", "default:stick", ""},
+		{"default:stick", "group:wood", "default:stick"},
+	}
+})
+
+minetest.register_craft({
 	output = "gloopblocks:evil_stick 4",
 	recipe = {
 		{"gloopblocks:evil_block"}
