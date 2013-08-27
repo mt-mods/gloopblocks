@@ -63,6 +63,7 @@ if minetest.get_modpath("glooptest") then
 		output = "gloopblocks:evil_stick",
 		recipe = {
 			"glooptest:kalite_lump",
+			"default:gold_ingot",
 			"default:coal_lump",
 			"default:stick"
 		}
@@ -75,6 +76,7 @@ elseif minetest.get_modpath("gloopores") then
 		output = "gloopblocks:evil_stick",
 		recipe = {
 			"gloopores:kalite_lump",
+			"default:gold_ingot",
 			"default:coal_lump",
 			"default:stick"
 		}
@@ -84,6 +86,7 @@ else
 		type = "shapeless",
 		output = "gloopblocks:evil_stick",
 		recipe = {
+			"default:gold_ingot",
 			"default:gold_ingot",
 			"default:coal_lump",
 			"default:stick"
