@@ -364,7 +364,7 @@ minetest.register_tool("gloopblocks:pick_evil", {
 		full_punch_interval = 1.0,
 		max_drop_level=3,
 		groupcaps={
-			cracky={times={[1]=0.10, [2]=0.10, [3]=0.10}, uses=2, maxlevel=2}
+			cracky={times={[1]=0.10, [2]=0.10, [3]=0.10}, uses=10, maxlevel=2}
 		},
 		damage_groups = {fleshy=6},
 	},
@@ -377,7 +377,7 @@ minetest.register_tool("gloopblocks:shovel_evil", {
 		full_punch_interval = 1.0,
 		max_drop_level=3,
 		groupcaps={
-			crumbly={times={[1]=0.05, [2]=0.05, [3]=0.05}, uses=2, maxlevel=2}
+			crumbly={times={[1]=0.05, [2]=0.05, [3]=0.05}, uses=10, maxlevel=2}
 		},
 		damage_groups = {fleshy=6},
 	},
@@ -390,8 +390,8 @@ minetest.register_tool("gloopblocks:axe_evil", {
 		full_punch_interval = 1.0,
 		max_drop_level=3,
 		groupcaps={
-			choppy={times={[1]=0.15, [2]=0.15, [3]=0.15}, uses=2, maxlevel=2},
-			fleshy={times={[1]=0.15, [2]=0.15, [3]=0.15}, uses=2, maxlevel=2} 
+			choppy={times={[1]=0.15, [2]=0.15, [3]=0.15}, uses=10, maxlevel=2},
+			fleshy={times={[1]=0.15, [2]=0.15, [3]=0.15}, uses=10, maxlevel=2} 
 		},
 		damage_groups = {fleshy=6},
 	},
@@ -404,9 +404,9 @@ minetest.register_tool("gloopblocks:sword_evil", {
 		full_punch_interval = 1.0,
 		max_drop_level=3,
 		groupcaps={
-			fleshy={times={[1]=0.20, [2]=0.20, [3]=0.20}, uses=2, maxlevel=2},
-			snappy={times={[1]=0.20, [2]=0.20, [3]=0.20}, uses=2, maxlevel=2},
-			choppy={times={[1]=0.20, [2]=0.20, [3]=0.20}, uses=2, maxlevel=2}
+			fleshy={times={[1]=0.20, [2]=0.20, [3]=0.20}, uses=10, maxlevel=2},
+			snappy={times={[1]=0.20, [2]=0.20, [3]=0.20}, uses=10, maxlevel=2},
+			choppy={times={[1]=0.20, [2]=0.20, [3]=0.20}, uses=10, maxlevel=2}
 		},
 		damage_groups = {fleshy=8},
 	}
