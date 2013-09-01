@@ -146,7 +146,7 @@ minetest.register_node("gloopblocks:scaffolding", {
 	groups = {choppy=3, oddly_breakable_by_hand=3},
 	sounds = default.node_sound_wood_defaults(),
 	on_rightclick = function(pos, node, clicker, itemstack)
-		if itemstack:get_name() == node.name then
+		if itemstack and itemstack:get_name() == node.name then
 			for i = 1,19 do
 				if minetest.get_node({x=pos.x,y=pos.y-i,z=pos.z}).name == "gloopblocks:scaffolding" and scafffound ~= 0 and scafffound ~= 1 then
 					local scafffound = 1
