@@ -15,18 +15,28 @@ minetest.register_craft( {
 	},
 })
 
+
+minetest.register_craft({
+	type = "shapeless",
+	output = "default:nyancat_rainbow",
+	recipe = {
+		"gloopblocks:rainbow_block", 
+		"default:diamondblock",
+		"default:steelblock",
+		"default:copperblock",
+		"default:bronzeblock",
+		"default:goldblock",
+		"default:mese",
+		"moreores:silver_block",
+		"moreores:mithril_block"
+	}
+})
+
 minetest.register_craft({
 	output = "default:nyancat",
 	recipe = {
 		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
 		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
-	}
-})
-
-minetest.register_craft({
-	output = "default:nyancat_rainbow",
-	recipe = {
 		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
 	}
 })
