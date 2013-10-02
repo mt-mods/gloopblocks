@@ -266,7 +266,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "gloopblocks:stone_brick_mossy",
+	output = "gloopblocks:stone_brick_mossy 2",
 	recipe = {
 		"default:stonebrick",
 		"default:stonebrick",
@@ -277,7 +277,7 @@ minetest.register_craft({
 
 minetest.register_craft({
 	type = "shapeless",
-	output = "gloopblocks:stone_brick_mossy",
+	output = "gloopblocks:stone_brick_mossy 2",
 	recipe = {
 		"default:stonebrick",
 		"default:stonebrick",
