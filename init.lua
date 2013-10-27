@@ -292,7 +292,7 @@ if minetest.get_modpath("moreblocks") then
 			{ snappy=2, choppy=2, oddly_breakable_by_hand=3, flammable=3, wool=1, not_in_creative_inventory=1 },
 			{ "wool_"..color..".png" },
 			colordesc.." Wool",
-			"wool:"..color,
+			color,
 			0
 		)
 		table.insert(circular_saw.known_stairs, "wool:"..color)
