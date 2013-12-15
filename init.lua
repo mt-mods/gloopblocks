@@ -13,7 +13,7 @@ the register_gloopblocks_alias function is borrowed from stairsplus.
 
 -- Helper functions
 
-function register_gloopblocks_alias(modname, origname, newmod, newname)
+local function register_gloopblocks_alias(modname, origname, newmod, newname)
 	minetest.register_alias(modname .. ":slab_" .. origname, newmod..":slab_" .. newname)
 	minetest.register_alias(modname .. ":slab_" .. origname .. "_inverted", newmod..":slab_" .. newname .. "_inverted")
 	minetest.register_alias(modname .. ":slab_" .. origname .. "_wall", newmod..":slab_" .. newname .. "_wall")
@@ -193,7 +193,10 @@ if minetest.get_modpath("moreblocks") then
 	}
 
 	for i in ipairs(blocks) do
-		if blocks[i][1] == "Evil Block" then light = 5 else light = 0 end
+		local light = 0
+		if blocks[i][1] == "Evil Block" then
+			light = 5
+		end
 		register_stair_slab_panel_micro("gloopblocks", blocks[i][3], "gloopblocks:"..blocks[i][3], {cracky=2, not_in_creative_inventory=1}, {"gloopblocks_"..blocks[i][3]..".png"}, blocks[i][1], blocks[i][3], light)	
 		register_gloopblocks_alias("gloopblocks", blocks[i][2], "gloopblocks", blocks[i][3])
 		register_gloopblocks_alias("moreblocks", blocks[i][3], "gloopblocks", blocks[i][3])
@@ -492,7 +495,7 @@ for i in ipairs(mossyobjects) do
 		chance = 50,
 		action = function(pos, node)
 			if minetest.find_node_near(pos, 2, "air") then
-				fdir = node.param2
+				local fdir = node.param2
 				minetest.add_node(pos, {name = mossyobjects[i][2], param2 = fdir})
 			end
 		end,
@@ -516,7 +519,7 @@ default.cool_lava_flowing = function(pos)
 	end
 end
 
-gloopblocks_search_nearby_nodes = function(pos, node)
+local gloopblocks_search_nearby_nodes = function(pos, node)
 	if minetest.get_node({x=pos.x-1, y=pos.y, z=pos.z}).name == node then return true end
 	if minetest.get_node({x=pos.x+1, y=pos.y, z=pos.z}).name == node then return true end
 	if minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == node then return true end
