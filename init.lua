@@ -462,6 +462,15 @@ for i in ipairs(mossyobjects) do
 end
 
 -- Hook into the default lavacooling function to generate basalt and pumice
+local gloopblocks_search_nearby_nodes = function(pos, node)
+	if minetest.get_node({x=pos.x-1, y=pos.y, z=pos.z}).name == node then return true end
+	if minetest.get_node({x=pos.x+1, y=pos.y, z=pos.z}).name == node then return true end
+	if minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == node then return true end
+	if minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name == node then return true end
+	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z-1}).name == node then return true end
+	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z+1}).name == node then return true end
+	return false
+end
 
 default.cool_lava_source = function(pos)
 	if gloopblocks_search_nearby_nodes(pos,"default:water_source")
@@ -476,16 +485,6 @@ default.cool_lava_flowing = function(pos)
 	elseif gloopblocks_search_nearby_nodes(pos,"default:water_flowing") then
 		minetest.set_node(pos, {name="gloopblocks:pumice"})
 	end
-end
-
-local gloopblocks_search_nearby_nodes = function(pos, node)
-	if minetest.get_node({x=pos.x-1, y=pos.y, z=pos.z}).name == node then return true end
-	if minetest.get_node({x=pos.x+1, y=pos.y, z=pos.z}).name == node then return true end
-	if minetest.get_node({x=pos.x, y=pos.y-1, z=pos.z}).name == node then return true end
-	if minetest.get_node({x=pos.x, y=pos.y+1, z=pos.z}).name == node then return true end
-	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z-1}).name == node then return true end
-	if minetest.get_node({x=pos.x, y=pos.y, z=pos.z+1}).name == node then return true end
-	return false
 end
 
 dofile(minetest.get_modpath("gloopblocks").."/crafts.lua")
