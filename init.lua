@@ -36,6 +36,15 @@ minetest.register_node("gloopblocks:evil_block", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("gloopblocks:obsidian_cooled", {
+	description = "Obsidian",
+	tiles = {"default_obsidian.png"},
+	is_ground_content = true,
+	sounds = default.node_sound_stone_defaults(),
+	groups = {cracky=1, level=2, not_in_creative_inventory=1},
+	drop = "default:obsidian"
+})
+
 minetest.register_node("gloopblocks:basalt", {
 	description = "Basalt",
 	tiles = {"gloopblocks_basalt.png"},
@@ -43,11 +52,27 @@ minetest.register_node("gloopblocks:basalt", {
 	sounds = default.node_sound_stone_defaults(),
 })
 
+minetest.register_node("gloopblocks:basalt_cooled", {
+	description = "Basalt",
+	tiles = {"gloopblocks_basalt.png"},
+	groups = {cracky=2, not_in_creative_inventory=1},
+	sounds = default.node_sound_stone_defaults(),
+	drop = "gloopblocks:basalt"
+})
+
 minetest.register_node("gloopblocks:pumice", {
 	description = "Pumice",
 	tiles = {"gloopblocks_pumice.png"},
 	groups = {cracky=3},
 	sounds = default.node_sound_stone_defaults(),
+})
+
+minetest.register_node("gloopblocks:pumice_cooled", {
+	description = "Pumice",
+	tiles = {"gloopblocks_pumice.png"},
+	groups = {cracky=3, not_in_creative_inventory=1},
+	sounds = default.node_sound_stone_defaults(),
+	drop = "gloopblocks:pumice"
 })
 
 minetest.register_node("gloopblocks:pavement", {
@@ -475,15 +500,15 @@ end
 default.cool_lava_source = function(pos)
 	if gloopblocks_search_nearby_nodes(pos,"default:water_source")
 	or gloopblocks_search_nearby_nodes(pos,"default:water_flowing") then
-		minetest.set_node(pos, {name="default:obsidian"})
+		minetest.set_node(pos, {name="gloopblocks:obsidian_cooled"})
 	end
 end
 
 default.cool_lava_flowing = function(pos)
 	if gloopblocks_search_nearby_nodes(pos,"default:water_source") then
-		minetest.set_node(pos, {name="gloopblocks:basalt"})
+		minetest.set_node(pos, {name="gloopblocks:basalt_cooled"})
 	elseif gloopblocks_search_nearby_nodes(pos,"default:water_flowing") then
-		minetest.set_node(pos, {name="gloopblocks:pumice"})
+		minetest.set_node(pos, {name="gloopblocks:pumice_cooled"})
 	end
 end
 
