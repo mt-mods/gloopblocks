@@ -42,7 +42,10 @@ minetest.register_node("gloopblocks:obsidian_cooled", {
 	is_ground_content = true,
 	sounds = default.node_sound_stone_defaults(),
 	groups = {cracky=1, level=2, not_in_creative_inventory=1},
-	drop = "default:obsidian"
+	drop = "default:obsidian",
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		minetest.add_node(pos, {name = "default:obsidian"})
+	end
 })
 
 minetest.register_node("gloopblocks:basalt", {
@@ -57,7 +60,10 @@ minetest.register_node("gloopblocks:basalt_cooled", {
 	tiles = {"gloopblocks_basalt.png"},
 	groups = {cracky=2, not_in_creative_inventory=1},
 	sounds = default.node_sound_stone_defaults(),
-	drop = "gloopblocks:basalt"
+	drop = "gloopblocks:basalt",
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		minetest.add_node(pos, {name = "gloopblocks:basalt"})
+	end
 })
 
 minetest.register_node("gloopblocks:pumice", {
@@ -72,7 +78,10 @@ minetest.register_node("gloopblocks:pumice_cooled", {
 	tiles = {"gloopblocks_pumice.png"},
 	groups = {cracky=3, not_in_creative_inventory=1},
 	sounds = default.node_sound_stone_defaults(),
-	drop = "gloopblocks:pumice"
+	drop = "gloopblocks:pumice",
+	after_place_node = function(pos, placer, itemstack, pointed_thing)
+		minetest.add_node(pos, {name = "gloopblocks:pumice"})
+	end
 })
 
 minetest.register_node("gloopblocks:pavement", {
