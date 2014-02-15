@@ -458,6 +458,22 @@ elseif minetest.get_modpath("stairs") then
 			"Mossy Cobble Roadbed Slab",
 			default.node_sound_stone_defaults())
 
+	-- stairs:xxxx_cement
+	stairs.register_stair_and_slab("cement", "gloopblocks:cement",
+			{cracky=2},
+			{"gloopblocks_cement.png"},
+			"Cement Stair",
+			"Cement Slab",
+			default.node_sound_stone_defaults())
+
+	-- stairs:xxxx_pavement
+	stairs.register_stair_and_slab("pavement", "gloopblocks:pavement",
+			{cracky=3, oddly_breakable_by_hand=3},
+			{"gloopblocks_pavement.png"},
+			"Pavement Stair",
+			"Pavement Slab",
+			default.node_sound_stone_defaults())
+
 	gloopblocks_register_mossy_conversion({
 		{ "default:cobble", 					"default:mossycobble" },
 		{ "stairs:stair_cobble", 				"stairs:stair_mossycobble" },
@@ -483,6 +499,10 @@ elseif minetest.get_modpath("stairs") then
 	minetest.register_alias("gloopblocks:slab_stone_brick_mossy", "stairs:slab_stone_brick_mossy")
 	minetest.register_alias("gloopblocks:stair_stone_mossy", "stairs:stair_stone_mossy")
 	minetest.register_alias("gloopblocks:slab_stone_mossy", "stairs:slab_stone_mossy")
+	minetest.register_alias("gloopblocks:stair_cement", "stairs:stair_cement")
+	minetest.register_alias("gloopblocks:slab_cement", "stairs:slab_cement")
+	minetest.register_alias("gloopblocks:stair_pavement", "stairs:stair_pavement")
+	minetest.register_alias("gloopblocks:slab_pavement", "stairs:slab_pavement")
 
 end
 
