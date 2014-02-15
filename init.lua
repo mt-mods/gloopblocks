@@ -218,7 +218,24 @@ minetest.register_node("gloopblocks:scaffolding", {
 minetest.register_alias("moreblocks:oerkkiblock", "gloopblocks:oerkki_block")
 minetest.register_alias("gloopblocks:obsidian", "default:obsidian")
 
--- Stairsplus defs
+-- Stairs/slabs defs, conversion of normal -> mossy items
+
+function gloopblocks_register_mossy_conversion(mossyobjects)
+	for i in ipairs(mossyobjects) do
+		minetest.register_abm({
+			nodenames = { mossyobjects[i][1] },
+			neighbors = {"default:water_source", "default:water_flowing"},
+			interval = 120,
+			chance = 50,
+			action = function(pos, node)
+				if minetest.find_node_near(pos, 2, "air") then
+					local fdir = node.param2
+					minetest.add_node(pos, {name = mossyobjects[i][2], param2 = fdir})
+				end
+			end,
+		})
+	end
+end
 
 if minetest.get_modpath("moreblocks") then
 
@@ -335,8 +352,139 @@ if minetest.get_modpath("moreblocks") then
 		)
 		table.insert(circular_saw.known_stairs, "wool:"..color)
 	end
-end
 
+	-- ABMs for mossy objects
+
+	gloopblocks_register_mossy_conversion({
+		{ "default:cobble", 						"default:mossycobble" },
+		{ "default:stair_cobble", 					"default:stair_mossycobble" },
+		{ "default:slab_cobble", 					"default:slab_mossycobble" },
+		{ "moreblocks:stair_cobble", 				"moreblocks:stair_mossycobble" },
+		{ "moreblocks:stair_cobble_inner", 			"moreblocks:stair_mossycobble_inner" },
+		{ "moreblocks:stair_cobble_outer", 			"moreblocks:stair_mossycobble_outer" },
+		{ "moreblocks:stair_cobble_half", 			"moreblocks:stair_mossycobble_half" },
+		{ "moreblocks:slab_cobble_quarter", 		"moreblocks:slab_mossycobble_quarter" },
+		{ "moreblocks:slab_cobble", 				"moreblocks:slab_mossycobble" },
+		{ "moreblocks:slab_cobble_three_quarter", 	"moreblocks:slab_mossycobble_three_quarter" },
+		{ "moreblocks:panel_cobble", 				"moreblocks:panel_mossycobble" },
+		{ "moreblocks:micro_cobble", 				"moreblocks:micro_mossycobble" },
+		{ "moreblocks:stair_cobble_alt", 			"moreblocks:stair_mossycobble_alt" },
+
+		{ "gloopblocks:cobble_road", 				"gloopblocks:cobble_road_mossy" },
+		{ "gloopblocks:stair_cobble_road", 			"gloopblocks:stair_cobble_road_mossy" },
+		{ "gloopblocks:slab_cobble_road", 			"gloopblocks:slab_cobble_road_mossy" },
+		{ "gloopblocks:stair_cobble_road", 			"gloopblocks:stair_cobble_road_mossy" },
+		{ "gloopblocks:stair_cobble_road_inner", 	"gloopblocks:stair_cobble_road_mossy_inner" },
+		{ "gloopblocks:stair_cobble_road_outer", 	"gloopblocks:stair_cobble_road_mossy_outer" },
+		{ "gloopblocks:stair_cobble_road_half", 	"gloopblocks:stair_cobble_road_mossy_half" },
+		{ "gloopblocks:slab_cobble_road_quarter", 	"gloopblocks:slab_cobble_road_mossy_quarter" },
+		{ "gloopblocks:slab_cobble_road", 			"gloopblocks:slab_cobble_road_mossy" },
+		{ "gloopblocks:slab_cobble_road_three_quarter",	"gloopblocks:slab_cobble_road_mossy_three_quarter" },
+		{ "gloopblocks:panel_cobble_road", 			"gloopblocks:panel_cobble_road_mossy" },
+		{ "gloopblocks:micro_cobble_road", 			"gloopblocks:micro_cobble_road_mossy" },
+		{ "gloopblocks:stair_cobble_road_alt", 		"gloopblocks:stair_cobble_road_mossy_alt" },
+
+		{ "default:stonebrick", 					"gloopblocks:stone_brick_mossy" },
+		{ "default:stair_stonebrick", 				"gloopblocks:stair_stone_brick_mossy" },
+		{ "default:slab_stonebrick", 				"gloopblocks:slab_stone_brick_mossy" },
+		{ "moreblocks:stair_stonebrick", 			"gloopblocks:stair_stone_brick_mossy" },
+		{ "moreblocks:stair_stonebrick_inner", 		"gloopblocks:stair_stone_brick_mossy_inner" },
+		{ "moreblocks:stair_stonebrick_outer", 		"gloopblocks:stair_stone_brick_mossy_outer" },
+		{ "moreblocks:stair_stonebrick_half", 		"gloopblocks:stair_stone_brick_mossy_half" },
+		{ "moreblocks:slab_stonebrick_quarter", 	"gloopblocks:slab_stone_brick_mossy_quarter" },
+		{ "moreblocks:slab_stonebrick", 			"gloopblocks:slab_stone_brick_mossy" },
+		{ "moreblocks:slab_stonebrick_three_quarter", "gloopblocks:slab_stone_brick_mossy_three_quarter" },
+		{ "moreblocks:panel_stonebrick", 			"gloopblocks:panel_stone_brick_mossy" },
+		{ "moreblocks:micro_stonebrick", 			"gloopblocks:micro_stone_brick_mossy" },
+		{ "moreblocks:stair_stonebrick_alt", 		"gloopblocks:stair_stone_brick_mossy_alt" },
+
+		{ "default:stone", 							"gloopblocks:stone_mossy" },
+		{ "default:stair_stone", 					"gloopblocks:stair_stone_mossy" },
+		{ "default:slab_stone", 					"gloopblocks:slab_stone_mossy" },
+		{ "moreblocks:stair_stone", 				"gloopblocks:stair_stone_mossy" },
+		{ "moreblocks:stair_stone_inner", 			"gloopblocks:stair_stone_mossy_inner" },
+		{ "moreblocks:stair_stone_outer", 			"gloopblocks:stair_stone_mossy_outer" },
+		{ "moreblocks:stair_stone_half", 			"gloopblocks:stair_stone_mossy_half" },
+
+		{ "moreblocks:slab_stone_quarter", 			"gloopblocks:slab_stone_mossy_quarter" },
+		{ "moreblocks:slab_stone", 					"gloopblocks:slab_stone_mossy" },
+		{ "moreblocks:slab_stone_three_quarter",	"gloopblocks:slab_stone_mossy_three_quarter" },
+		{ "moreblocks:panel_stone", 				"gloopblocks:panel_stone_mossy" },
+		{ "moreblocks:micro_stone", 				"gloopblocks:micro_stone_mossy" },
+		{ "moreblocks:stair_stone_alt", 			"gloopblocks:stair_stone_mossy_alt" },
+	})
+
+elseif minetest.get_modpath("stairs") then
+
+	--stairs.register_stair(subname, recipeitem, groups, images, description, sounds)
+
+	-- stairs:xxxx_stone_mossy ; xxxx = stair or slab
+	stairs.register_stair_and_slab("stone_mossy", "gloopblocks:stone_mossy",
+			{cracky=3},
+			{"gloopblocks_stone_mossy.png"},
+			"Mossy Stone Stair",
+			"Mossy Stone Slab",
+			default.node_sound_stone_defaults())
+
+	-- stairs:xxxx_mossycobble
+	stairs.register_stair_and_slab("mossycobble", "default:mossycobble",
+			{cracky=3},
+			{"default_mossycobble.png"},
+			"Mossy Cobble Stair",
+			"Mossy Cobble Slab",
+			default.node_sound_stone_defaults())
+
+	-- stairs:xxxx_stone_brick_mossy
+	stairs.register_stair_and_slab("stone_brick_mossy", "gloopblocks:stone_brick_mossy",
+			{cracky=3},
+			{"gloopblocks_stone_brick_mossy.png"},
+			"Mossy Stone Brick Stair",
+			"Mossy Stone Brick Slab",
+			default.node_sound_stone_defaults())
+
+	-- stairs:xxxx_cobble_road
+	stairs.register_stair_and_slab("cobble_road", "gloopblocks:cobble_road",
+			{cracky=3},
+			{"gloopblocks_cobble_road.png"},
+			"Cobble Roadbed Stair",
+			"Cobble Roadbed Slab",
+			default.node_sound_stone_defaults())
+
+	-- stairs:xxxx_cobble_road_mossy
+	stairs.register_stair_and_slab("cobble_road_mossy", "gloopblocks:cobble_road_mossy",
+			{cracky=3},
+			{"gloopblocks_cobble_road_mossy.png"},
+			"Mossy Cobble Roadbed Stair",
+			"Mossy Cobble Roadbed Slab",
+			default.node_sound_stone_defaults())
+
+	gloopblocks_register_mossy_conversion({
+		{ "default:cobble", 					"default:mossycobble" },
+		{ "stairs:stair_cobble", 				"stairs:stair_mossycobble" },
+		{ "stairs:slab_cobble", 				"stairs:slab_mossycobble" },
+		{ "gloopblocks:cobble_road", 			"gloopblocks:cobble_road_mossy" },
+		{ "stairs:stair_cobble_road", 			"stairs:stair_cobble_road_mossy" },
+		{ "stairs:slab_cobble_road", 			"stairs:slab_cobble_road_mossy" },
+		{ "default:stonebrick", 				"gloopblocks:stone_brick_mossy" },
+		{ "stairs:stair_stonebrick", 			"stairs:stair_stone_brick_mossy" },
+		{ "stairs:slab_stonebrick", 			"stairs:slab_stone_brick_mossy" },
+		{ "default:stone", 						"gloopblocks:stone_mossy" },
+		{ "stairs:stair_stone", 				"stairs:stair_stone_mossy" },
+		{ "stairs:slab_stone", 					"stairs:slab_stone_mossy" },
+	})
+
+	minetest.register_alias("default:stair_mossycobble", "stairs:stair_mossycobble")
+	minetest.register_alias("default:slab_mossycobble", "stairs:slab_mossycobble")
+	minetest.register_alias("gloopblocks:stair_cobble_road", "stairs:stair_cobble_road")
+	minetest.register_alias("gloopblocks:slab_cobble_road", "stairs:slab_cobble_road")
+	minetest.register_alias("gloopblocks:stair_cobble_road_mossy", "stairs:stair_cobble_road_mossy")
+	minetest.register_alias("gloopblocks:slab_cobble_road_mossy", "stairs:slab_cobble_road_mossy")
+	minetest.register_alias("gloopblocks:stair_stone_brick_mossy", "stairs:stair_stone_brick_mossy")
+	minetest.register_alias("gloopblocks:slab_stone_brick_mossy", "stairs:slab_stone_brick_mossy")
+	minetest.register_alias("gloopblocks:stair_stone_mossy", "stairs:stair_stone_mossy")
+	minetest.register_alias("gloopblocks:slab_stone_mossy", "stairs:slab_stone_mossy")
+
+end
 
 -- Tools
 
@@ -461,81 +609,6 @@ minetest.register_craftitem("gloopblocks:evil_stick", {
 	description = "Evil Stick",
 	inventory_image = "gloopblocks_evil_stick.png",
 })
-
--- ABMs for mossy objects
-
-local mossyobjects={
-	{ "default:cobble", 				"default:mossycobble" },
-	{ "default:stair_cobble", 			"default:stair_mossycobble" },
-	{ "default:slab_cobble", 			"default:slab_mossycobble" },
-	{ "moreblocks:stair_cobble", 			"moreblocks:stair_mossycobble" },
-	{ "moreblocks:stair_cobble_inner", 		"moreblocks:stair_mossycobble_inner" },
-	{ "moreblocks:stair_cobble_outer", 		"moreblocks:stair_mossycobble_outer" },
-	{ "moreblocks:stair_cobble_half", 		"moreblocks:stair_mossycobble_half" },
-	{ "moreblocks:slab_cobble_quarter", 		"moreblocks:slab_mossycobble_quarter" },
-	{ "moreblocks:slab_cobble", 			"moreblocks:slab_mossycobble" },
-	{ "moreblocks:slab_cobble_three_quarter", 	"moreblocks:slab_mossycobble_three_quarter" },
-	{ "moreblocks:panel_cobble", 			"moreblocks:panel_mossycobble" },
-	{ "moreblocks:micro_cobble", 			"moreblocks:micro_mossycobble" },
-	{ "moreblocks:stair_cobble_alt", 		"moreblocks:stair_mossycobble_alt" },
-
-	{ "gloopblocks:cobble_road", 			"gloopblocks:cobble_road_mossy" },
-	{ "gloopblocks:stair_cobble_road", 		"gloopblocks:stair_cobble_road_mossy" },
-	{ "gloopblocks:slab_cobble_road", 		"gloopblocks:slab_cobble_road_mossy" },
-	{ "gloopblocks:stair_cobble_road", 		"gloopblocks:stair_cobble_road_mossy" },
-	{ "gloopblocks:stair_cobble_road_inner", 	"gloopblocks:stair_cobble_road_mossy_inner" },
-	{ "gloopblocks:stair_cobble_road_outer", 	"gloopblocks:stair_cobble_road_mossy_outer" },
-	{ "gloopblocks:stair_cobble_road_half", 	"gloopblocks:stair_cobble_road_mossy_half" },
-	{ "gloopblocks:slab_cobble_road_quarter", 	"gloopblocks:slab_cobble_road_mossy_quarter" },
-	{ "gloopblocks:slab_cobble_road", 		"gloopblocks:slab_cobble_road_mossy" },
-	{ "gloopblocks:slab_cobble_road_three_quarter",	"gloopblocks:slab_cobble_road_mossy_three_quarter" },
-	{ "gloopblocks:panel_cobble_road", 		"gloopblocks:panel_cobble_road_mossy" },
-	{ "gloopblocks:micro_cobble_road", 		"gloopblocks:micro_cobble_road_mossy" },
-	{ "gloopblocks:stair_cobble_road_alt", 		"gloopblocks:stair_cobble_road_mossy_alt" },
-
-	{ "default:stonebrick", 			"gloopblocks:stone_brick_mossy" },
-	{ "default:stair_stonebrick", 			"gloopblocks:stair_stone_brick_mossy" },
-	{ "default:slab_stonebrick", 			"gloopblocks:slab_stone_brick_mossy" },
-	{ "moreblocks:stair_stonebrick", 		"gloopblocks:stair_stone_brick_mossy" },
-	{ "moreblocks:stair_stonebrick_inner", 		"gloopblocks:stair_stone_brick_mossy_inner" },
-	{ "moreblocks:stair_stonebrick_outer", 		"gloopblocks:stair_stone_brick_mossy_outer" },
-	{ "moreblocks:stair_stonebrick_half", 		"gloopblocks:stair_stone_brick_mossy_half" },
-	{ "moreblocks:slab_stonebrick_quarter", 	"gloopblocks:slab_stone_brick_mossy_quarter" },
-	{ "moreblocks:slab_stonebrick", 		"gloopblocks:slab_stone_brick_mossy" },
-	{ "moreblocks:slab_stonebrick_three_quarter",	"gloopblocks:slab_stone_brick_mossy_three_quarter" },
-	{ "moreblocks:panel_stonebrick", 		"gloopblocks:panel_stone_brick_mossy" },
-	{ "moreblocks:micro_stonebrick", 		"gloopblocks:micro_stone_brick_mossy" },
-	{ "moreblocks:stair_stonebrick_alt", 		"gloopblocks:stair_stone_brick_mossy_alt" },
-
-	{ "default:stone", 				"gloopblocks:stone_mossy" },
-	{ "default:stair_stone", 			"gloopblocks:stair_stone_mossy" },
-	{ "default:slab_stone", 			"gloopblocks:slab_stone_mossy" },
-	{ "moreblocks:stair_stone", 			"gloopblocks:stair_stone_mossy" },
-	{ "moreblocks:stair_stone_inner", 		"gloopblocks:stair_stone_mossy_inner" },
-	{ "moreblocks:stair_stone_outer", 		"gloopblocks:stair_stone_mossy_outer" },
-	{ "moreblocks:stair_stone_half", 		"gloopblocks:stair_stone_mossy_half" },
-	{ "moreblocks:slab_stone_quarter", 		"gloopblocks:slab_stone_mossy_quarter" },
-	{ "moreblocks:slab_stone", 			"gloopblocks:slab_stone_mossy" },
-	{ "moreblocks:slab_stone_three_quarter",	"gloopblocks:slab_stone_mossy_three_quarter" },
-	{ "moreblocks:panel_stone", 			"gloopblocks:panel_stone_mossy" },
-	{ "moreblocks:micro_stone", 			"gloopblocks:micro_stone_mossy" },
-	{ "moreblocks:stair_stone_alt", 		"gloopblocks:stair_stone_mossy_alt" },
-}
-
-for i in ipairs(mossyobjects) do
-	minetest.register_abm({
-		nodenames = { mossyobjects[i][1] },
-		neighbors = {"default:water_source", "default:water_flowing"},
-		interval = 120,
-		chance = 50,
-		action = function(pos, node)
-			if minetest.find_node_near(pos, 2, "air") then
-				local fdir = node.param2
-				minetest.add_node(pos, {name = mossyobjects[i][2], param2 = fdir})
-			end
-		end,
-	})
-end
 
 -- Hook into the default lavacooling function to generate basalt and pumice
 local gloopblocks_search_nearby_nodes = function(pos, node)
