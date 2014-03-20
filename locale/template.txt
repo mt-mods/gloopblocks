@@ -30,6 +30,22 @@ Brown Wool =
 Pink Wool = 
 Dark Grey Wool = 
 Dark Green Wool = 
+
+Mossy Stone Stair = 
+Mossy Cobble Stair = 
+Mossy Stone Brick Stair = 
+Cobble Roadbed Stair = 
+Mossy Cobble Roadbed Stair = 
+Cement Stair = 
+Pavement Stair = 
+Mossy Stone Slab = 
+Mossy Cobble Slab = 
+Mossy Stone Brick Slab = 
+Cobble Roadbed Slab = 
+Mossy Cobble Roadbed Slab = 
+Cement Slab = 
+Pavement Slab = 
+
 Cement Pickaxe Wool = 
 Cement Shovel Wool = 
 Cement Axe Wool = 
