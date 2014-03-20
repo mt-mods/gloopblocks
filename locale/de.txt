@@ -31,6 +31,22 @@ Brown Wool = Braune Wolle
 Pink Wool = Rosa Wolle
 Dark Grey Wool = Dunkelgraue Wolle
 Dark Green Wool = Dunkelgruene Wolle
+
+Mossy Stone Stair = Moosige Steintreppe
+Mossy Cobble Stair = Moosige Pflastersteintreppe
+Mossy Stone Brick Stair = Moosige Steinziegeltreppe
+Cobble Roadbed Stair = Kopfsteinstrassentreppe
+Mossy Cobble Roadbed Stair = Moosige Kopfsteinstrassentreppe
+Cement Stair = Zementtreppe
+Pavement Stair = Strassenbelagtreppe
+Mossy Stone Slab = Moosige Steinstufe
+Mossy Cobble Slab = Moosige Pflastersteinstufe
+Mossy Stone Brick Slab = Moosige Steinziegelstufe
+Cobble Roadbed Slab = Kopfsteinstrassenstufe
+Mossy Cobble Roadbed Slab = Moosige Kopfsteinstrassenstufe
+Cement Slab = Zementstufe
+Pavement Slab = Strassenbelagstufe
+
 Cement Pickaxe = Zementspitzhacke
 Cement Shovel = Zementschaufel
 Cement Axe = Zementaxt
