@@ -17,23 +17,23 @@ end
 
 -- misc stuff
 
-	local colorlist = {
-		{"white",      "White"},
-		{"grey",       "Grey"},
-		{"black",      "Black"},
-		{"red",        "Red"},
-		{"yellow",     "Yellow"},
-		{"green",      "Green"},
-		{"cyan",       "Cyan"},
-		{"blue",       "Blue"},
-		{"magenta",    "Magenta"},
-		{"orange",     "Orange"},
-		{"violet",     "Violet"},
-		{"brown",      "Brown"},
-		{"pink",       "Pink"},
-		{"dark_grey",  "Dark Grey"},
-		{"dark_green", "Dark Green"},
-	}
+local colorlist = {
+	{"white",      "White"},
+	{"grey",       "Grey"},
+	{"black",      "Black"},
+	{"red",        "Red"},
+	{"yellow",     "Yellow"},
+	{"green",      "Green"},
+	{"cyan",       "Cyan"},
+	{"blue",       "Blue"},
+	{"magenta",    "Magenta"},
+	{"orange",     "Orange"},
+	{"violet",     "Violet"},
+	{"brown",      "Brown"},
+	{"pink",       "Pink"},
+	{"dark_grey",  "Dark Grey"},
+	{"dark_green", "Dark Green"},
+}
 
 -- Nodes
 
@@ -390,59 +390,59 @@ elseif minetest.get_modpath("stairs") then
 
 	-- stairs:xxxx_stone_mossy ; xxxx = stair or slab
 	stairs.register_stair_and_slab("stone_mossy", "gloopblocks:stone_mossy",
-			{cracky=3},
-			{"gloopblocks_stone_mossy.png"},
-			S("Mossy Stone Stair"),
-			S("Mossy Stone Slab"),
-			default.node_sound_stone_defaults())
+		{cracky=3},
+		{"gloopblocks_stone_mossy.png"},
+		S("Mossy Stone Stair"),
+		S("Mossy Stone Slab"),
+		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_mossycobble
 	stairs.register_stair_and_slab("mossycobble", "default:mossycobble",
-			{cracky=3},
-			{"default_mossycobble.png"},
-			S("Mossy Cobble Stair"),
-			S("Mossy Cobble Slab"),
-			default.node_sound_stone_defaults())
+		{cracky=3},
+		{"default_mossycobble.png"},
+		S("Mossy Cobble Stair"),
+		S("Mossy Cobble Slab"),
+		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_stone_brick_mossy
 	stairs.register_stair_and_slab("stone_brick_mossy", "gloopblocks:stone_brick_mossy",
-			{cracky=3},
-			{"gloopblocks_stone_brick_mossy.png"},
-			S("Mossy Stone Brick Stair"),
-			S("Mossy Stone Brick Slab"),
-			default.node_sound_stone_defaults())
+		{cracky=3},
+		{"gloopblocks_stone_brick_mossy.png"},
+		S("Mossy Stone Brick Stair"),
+		S("Mossy Stone Brick Slab"),
+		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_cobble_road
 	stairs.register_stair_and_slab("cobble_road", "gloopblocks:cobble_road",
-			{cracky=3},
-			{"gloopblocks_cobble_road.png"},
-			S("Cobble Roadbed Stair"),
-			S("Cobble Roadbed Slab"),
-			default.node_sound_stone_defaults())
+		{cracky=3},
+		{"gloopblocks_cobble_road.png"},
+		S("Cobble Roadbed Stair"),
+		S("Cobble Roadbed Slab"),
+		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_cobble_road_mossy
 	stairs.register_stair_and_slab("cobble_road_mossy", "gloopblocks:cobble_road_mossy",
-			{cracky=3},
-			{"gloopblocks_cobble_road_mossy.png"},
-			S("Mossy Cobble Roadbed Stair"),
-			S("Mossy Cobble Roadbed Slab"),
-			default.node_sound_stone_defaults())
+		{cracky=3},
+		{"gloopblocks_cobble_road_mossy.png"},
+		S("Mossy Cobble Roadbed Stair"),
+		S("Mossy Cobble Roadbed Slab"),
+		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_cement
 	stairs.register_stair_and_slab("cement", "gloopblocks:cement",
-			{cracky=2},
-			{"gloopblocks_cement.png"},
-			S("Cement Stair"),
-			S("Cement Slab"),
-			default.node_sound_stone_defaults())
+		{cracky=2},
+		{"gloopblocks_cement.png"},
+		S("Cement Stair"),
+		S("Cement Slab"),
+		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_pavement
 	stairs.register_stair_and_slab("pavement", "gloopblocks:pavement",
-			{cracky=3, oddly_breakable_by_hand=3},
-			{"gloopblocks_pavement.png"},
-			S("Pavement Stair"),
-			S("Pavement Slab"),
-			default.node_sound_stone_defaults())
+		{cracky=3, oddly_breakable_by_hand=3},
+		{"gloopblocks_pavement.png"},
+		S("Pavement Stair"),
+		S("Pavement Slab"),
+		default.node_sound_stone_defaults())
 
 	stairs.register_stair_and_slab("basalt", "gloopblocks:basalt", 
 		{cracky=2},
