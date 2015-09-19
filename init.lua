@@ -15,6 +15,26 @@ else
 	S = function(s) return s end
 end
 
+-- misc stuff
+
+	local colorlist = {
+		{"white",      "White"},
+		{"grey",       "Grey"},
+		{"black",      "Black"},
+		{"red",        "Red"},
+		{"yellow",     "Yellow"},
+		{"green",      "Green"},
+		{"cyan",       "Cyan"},
+		{"blue",       "Blue"},
+		{"magenta",    "Magenta"},
+		{"orange",     "Orange"},
+		{"violet",     "Violet"},
+		{"brown",      "Brown"},
+		{"pink",       "Pink"},
+		{"dark_grey",  "Dark Grey"},
+		{"dark_green", "Dark Green"},
+	}
+
 -- Nodes
 
 minetest.register_node("gloopblocks:rainbow_block", {
@@ -253,7 +273,7 @@ if minetest.get_modpath("moreblocks") then
 		sounds = default.node_sound_stone_defaults(),
 		sunlight_propagates = true,
 	})
-	
+
 	stairsplus:register_all("gloopblocks", "rainbow_block", "gloopblocks:rainbow_block", {
 		description = "Rainbow Block",
 		tiles = {"gloopblocks_rainbow_block.png"},
@@ -261,7 +281,7 @@ if minetest.get_modpath("moreblocks") then
 		sounds = default.node_sound_defaults(),
 		sunlight_propagates = true,
 	})
-	
+
 	stairsplus:register_all("gloopblocks", "evil_block", "gloopblocks:evil_block", {
 		description = "Evil Block",
 		tiles = {"gloopblocks_evil_block.png"},
@@ -270,7 +290,7 @@ if minetest.get_modpath("moreblocks") then
 		light_source = 5,
 		sunlight_propagates = true,
 	})
-	
+
 	stairsplus:register_all("gloopblocks", "basalt", "gloopblocks:basalt", {
 		description = "Basalt",
 		tiles = {"gloopblocks_basalt.png"},
@@ -278,7 +298,7 @@ if minetest.get_modpath("moreblocks") then
 		sounds = default.node_sound_stone_defaults(),
 		sunlight_propagates = true,
 	})
-	
+
 	stairsplus:register_all("gloopblocks", "pumice", "gloopblocks:pumice", {
 		description = "Pumice",
 		tiles = {"gloopblocks_pumice.png"},
@@ -287,24 +307,6 @@ if minetest.get_modpath("moreblocks") then
 		sunlight_propagates = true,
 	})
 
-	local colorlist = {
-		{"white",      "White"},
-		{"grey",       "Grey"},
-		{"black",      "Black"},
-		{"red",        "Red"},
-		{"yellow",     "Yellow"},
-		{"green",      "Green"},
-		{"cyan",       "Cyan"},
-		{"blue",       "Blue"},
-		{"magenta",    "Magenta"},
-		{"orange",     "Orange"},
-		{"violet",     "Violet"},
-		{"brown",      "Brown"},
-		{"pink",       "Pink"},
-		{"dark_grey",  "Dark Grey"},
-		{"dark_green", "Dark Green"},
-	}
-
 	for i in ipairs(colorlist) do
 		local color = colorlist[i][1]
 		local colordesc = colorlist[i][2]
@@ -312,7 +314,8 @@ if minetest.get_modpath("moreblocks") then
 		stairsplus:register_all("wool", color, "wool:"..color, {
 			description = colordesc.." Wool",
 			tiles = {"wool_"..color..".png"},
-			groups = {snappy=2, choppy=2, oddly_breakable_by_hand=3, flammable=3, wool=1, not_in_creative_inventory=1},
+			groups = {snappy=2,choppy=2,oddly_breakable_by_hand=3,flammable=3,wool=1,not_in_creative_inventory=1},
+			sounds = default.node_sound_defaults(),
 			sunlight_propagates = true,
 		})
 	end
@@ -440,6 +443,39 @@ elseif minetest.get_modpath("stairs") then
 			S("Pavement Stair"),
 			S("Pavement Slab"),
 			default.node_sound_stone_defaults())
+
+	stairs.register_stair_and_slab("basalt", "gloopblocks:basalt", 
+		{cracky=2},
+		{"gloopblocks_basalt.png"},
+		"Basalt Stair",
+		"Basalt Slab",
+		default.node_sound_stone_defaults())
+
+	stairs.register_stair_and_slab("pumice", "gloopblocks:pumice", 
+		{cracky=3},
+		{"gloopblocks_pumice.png"},
+		"Pumice Stair",
+		"Pumice Slab",
+		default.node_sound_stone_defaults())
+
+	stairs.register_stair_and_slab("rainbow_block", "gloopblocks:rainbow_block",
+		{cracky=3},
+		{"gloopblocks_rainbow_block.png"},
+		"Rainbow Block Stair",
+		"Rainbow Block Slab",
+		default.node_sound_defaults())
+
+	for i in ipairs(colorlist) do
+		local color = colorlist[i][1]
+		local colordesc = colorlist[i][2]
+
+		stairs.register_stair_and_slab("wool_"..color, "wool:"..color,
+			{snappy=2,choppy=2,oddly_breakable_by_hand=3,flammable=3,wool=1},
+			{"wool_"..color..".png"},
+			"Wool Stair ("..colordesc..")",
+			"Wool Slab ("..colordesc..")",
+			default.node_sound_defaults())
+	end
 
 	if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
 

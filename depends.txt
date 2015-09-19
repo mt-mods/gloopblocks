@@ -1,7 +1,8 @@
 default
 moreblocks?
+stairs?
 glooptest?
 gloopores?
 building_blocks?
-stairs?
 intllib?
+wool?
