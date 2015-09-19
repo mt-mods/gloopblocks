@@ -509,6 +509,12 @@ elseif minetest.get_modpath("stairs") then
 	minetest.register_alias("gloopblocks:slab_cement", "stairs:slab_cement")
 	minetest.register_alias("gloopblocks:stair_pavement", "stairs:stair_pavement")
 	minetest.register_alias("gloopblocks:slab_pavement", "stairs:slab_pavement")
+	minetest.register_alias("gloopblocks:stair_pumice", "stairs:stair_pumice")
+	minetest.register_alias("gloopblocks:slab_pumice", "stairs:slab_pumice")
+	minetest.register_alias("gloopblocks:stair_basalt", "stairs:stair_basalt")
+	minetest.register_alias("gloopblocks:slab_basalt", "stairs:slab_basalt")
+	minetest.register_alias("gloopblocks:stair_rainbow_block", "stairs:stair_rainbow_block")
+	minetest.register_alias("gloopblocks:slab_rainbow_block", "stairs:slab_rainbow_block")
 end
 
 -- Tools
