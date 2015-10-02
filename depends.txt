@@ -6,3 +6,4 @@ gloopores?
 building_blocks?
 intllib?
 wool?
+xdecor?
