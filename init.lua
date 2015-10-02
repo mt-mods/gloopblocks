@@ -209,7 +209,33 @@ if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
 	end
 end
 
-if minetest.get_modpath("moreblocks") then
+if minetest.get_modpath("xdecor") then
+	xdecor.worktable_nodes.gloopblocks = {
+		"oerkki_block", "stone_brick_mossy", "stone_mossy", "cobble_road",
+		"cobble_road_mossy", "cement", "pavement","rainbow_block",
+		"evil_block", "basalt", "pumice"
+	}
+
+	if minetest.setting_getbool("gloopblocks_mossy_conversion") then
+		local subnames = {
+			"", "_nanoslab", "_micropanel", "_microslab", "_thinstair", "_cube",
+			"_panel", "_slab", "_doublepanel", "_halfstair", "_outerstair",
+			"_stair", "_innerstair"
+		}
+		for _, subname in ipairs(subnames) do
+			gloopblocks_register_mossy_conversion({
+				-- Cobble --> Mossy Cobble
+				{ "default:cobble"..subname, "default:mossycobble"..subname },
+				-- Cobble Road --> Mossy Cobble Road
+				{ "gloopblocks:cobble_road"..subname, "gloopblocks:cobble_road_mossy"..subname },
+				-- Stone Brick --> Stone Brick Mossy
+				{ "default:stonebrick"..subname, "gloopblocks:stone_brick_mossy"..subname},
+				-- Stone --> Mossy Stone
+				{ "default:stone"..subname, "gloopblocks:stone_mossy"..subname}
+			})
+		end
+	end
+elseif minetest.get_modpath("moreblocks") then
 
 	stairsplus:register_all("gloopblocks", "oerkki_block", "gloopblocks:oerkki_block", {
 		description = "Oerkki Block",
