@@ -235,7 +235,9 @@ if minetest.get_modpath("xdecor") then
 			})
 		end
 	end
-elseif minetest.get_modpath("moreblocks") then
+end
+
+if minetest.get_modpath("moreblocks") then
 
 	stairsplus:register_all("gloopblocks", "oerkki_block", "gloopblocks:oerkki_block", {
 		description = "Oerkki Block",
