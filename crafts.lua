@@ -222,8 +222,8 @@ if minetest.get_modpath("building_blocks") then
 	minetest.register_craft({
 		output = "default:wood 4",
 		recipe = {
-			 {"building_blocks:faggot", "building_blocks:faggot"},
-			 {"building_blocks:faggot", "building_blocks:faggot"},
+			 {"building_blocks:sticks", "building_blocks:sticks"},
+			 {"building_blocks:sticks", "building_blocks:sticks"},
 		}
 	})
 else
