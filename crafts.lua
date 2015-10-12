@@ -358,3 +358,10 @@ minetest.register_craft({
 	}
 })
 
+minetest.register_craft({
+	output = "gloopblocks:fence_steel 1",
+	recipe = {
+		{"xpanes:bar", "xpanes:bar", "xpanes:bar"},
+		{"xpanes:bar", "xpanes:bar", "xpanes:bar"},
+	},
+})
