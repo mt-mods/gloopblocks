@@ -208,7 +208,7 @@ if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
 		end
 	end
 end
-
+--[[
 if minetest.get_modpath("xdecor") then
 	xdecor.worktable_nodes.gloopblocks = {
 		"oerkki_block", "stone_brick_mossy", "stone_mossy", "cobble_road",
@@ -236,7 +236,7 @@ if minetest.get_modpath("xdecor") then
 		end
 	end
 end
-
+--]]
 if minetest.get_modpath("moreblocks") then
 
 	stairsplus:register_all("gloopblocks", "oerkki_block", "gloopblocks:oerkki_block", {
