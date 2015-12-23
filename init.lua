@@ -348,6 +348,41 @@ if minetest.get_modpath("moreblocks") then
 		})
 	end
 
+	if minetest.get_modpath("caverealms") then
+		stairsplus:register_all("caverealms", "glow_crystal", "caverealms:glow_crystal", {
+			description = "Glow Crystal",
+			tiles = {"caverealms_glow_crystal.png"},
+			groups = {cracky=3, not_in_creative_inventory=1},
+			sounds = default.node_sound_glass_defaults(),
+			light_source = 12,
+			use_texture_alpha = true,
+			paramtype="light",
+			sunlight_propagates = true,
+		})
+
+		stairsplus:register_all("caverealms", "glow_emerald", "caverealms:glow_emerald", {
+			description = "Glow Emerald",
+			tiles = {"caverealms_glow_emerald.png"},
+			groups = {cracky=3, not_in_creative_inventory=1},
+			sounds = default.node_sound_glass_defaults(),
+			light_source = 12,
+			use_texture_alpha = true,
+			paramtype="light",
+			sunlight_propagates = true,
+		})
+
+		stairsplus:register_all("caverealms", "glow_mese", "caverealms:glow_mese", {
+			description = "Glow Mese",
+			tiles = {"caverealms_glow_mese.png"},
+			groups = {cracky=3, not_in_creative_inventory=1},
+			sounds = default.node_sound_glass_defaults(),
+			light_source = 12,
+			use_texture_alpha = true,
+			paramtype="light",
+			sunlight_propagates = true,
+		})
+	end
+
 	-- ABMs for mossy objects
 
 	if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
