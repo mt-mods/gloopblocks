@@ -194,24 +194,6 @@ minetest.register_craft({
 	}
 })
 
-if minetest.get_modpath("building_blocks") then
-	minetest.register_craft({
-		output = "default:wood 4",
-		recipe = {
-			 {"building_blocks:sticks", "building_blocks:sticks"},
-			 {"building_blocks:sticks", "building_blocks:sticks"},
-		}
-	})
-else
-	minetest.register_craft({
-		output = "default:wood",
-		recipe = {
-			 {"default:stick", "default:stick"},
-			 {"default:stick", "default:stick"},
-		}
-	})
-end
-
 minetest.register_craft({
 	output = "gloopblocks:pavement 5",
 	recipe = {
