@@ -159,6 +159,7 @@ if not minetest.get_modpath("usesdirt") then
 	local dirt_stone_tex  = "default_stone.png^(default_dirt.png^[mask:gloopblocks_dirt_stone_mask.png)"
 
 	local dirt_ladder_tex = "(default_dirt.png^[mask:gloopblocks_ladder_mask.png)^gloopblocks_ladder_overlay.png"
+	local dirt_brick_ladder_tex = "(("..dirt_brick_tex..")^[mask:gloopblocks_ladder_mask.png)^gloopblocks_ladder_overlay.png"
 	local dirt_cobble_ladder_tex = "(("..dirt_cobble_tex..")^[mask:gloopblocks_ladder_mask.png)^gloopblocks_ladder_overlay.png"
 	local dirt_stone_ladder_tex = "(("..dirt_stone_tex..")^[mask:gloopblocks_ladder_mask.png)^gloopblocks_ladder_overlay.png"
 
@@ -166,6 +167,45 @@ if not minetest.get_modpath("usesdirt") then
 		tiles = { dirt_brick_tex },
 		description = "Dirt Brick",
 		groups = {snappy=2,choppy=1,oddly_breakable_by_hand=2},
+	})
+
+	minetest.register_node(":usesdirt:dirt_brick_ladder", {
+		description = "Dirt Brick Ladder",
+		drawtype = "signlike",
+		tiles = { dirt_brick_ladder_tex },
+		inventory_image = dirt_brick_ladder_tex,
+		wield_image     = dirt_brick_ladder_tex,
+		paramtype = "light",
+		paramtype2 = "wallmounted",
+		is_ground_content = true,
+		walkable = false,
+		climbable = true,
+		selection_box = {
+			type = "wallmounted",
+			--wall_top = = <default>
+			--wall_bottom = = <default>
+			--wall_side = = <default>
+		},
+		groups = {cracky=3, stone=2},
+		legacy_wallmounted = true,
+	})
+	minetest.register_craft({
+		output = 'usesdirt:dirt_brick_ladder 3',
+		recipe = {
+			{'usesdirt:dirt_brick', '', 'usesdirt:dirt_brick'},
+			{'usesdirt:dirt_brick', 'usesdirt:dirt_brick','usesdirt:dirt_brick'},
+			{'usesdirt:dirt_brick','','usesdirt:dirt_brick'},
+		}
+	})
+
+	default.register_fence(":usesdirt:dirt_brick_fence", {
+		description = "Dirt Brick Fence",
+		texture = dirt_brick_tex,
+		inventory_image = "default_fence_overlay.png^("..dirt_brick_tex..")^default_fence_overlay.png^[makealpha:255,126,126",
+		wield_image = "default_fence_overlay.png^("..dirt_brick_tex..")^default_fence_overlay.png^[makealpha:255,126,126",
+		material = "usesdirt:dirt_brick",
+		groups = {cracky=3, stone=2},
+		sounds = default.node_sound_stone_defaults()
 	})
 
 	if minetest.get_modpath("moreblocks") then
