@@ -41,31 +41,6 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
-	type = "shapeless",
-	output = "gloopblocks:wet_cement",
-	recipe = {
-		"bucket:bucket_water",
-		"default:gravel",
-	},
-	replacements = {{'bucket:bucket_water', 'bucket:bucket_empty'},},
-})
-
-minetest.register_craft({
-	type = "cooking",
-	output = "gloopblocks:cement",
-	recipe = "gloopblocks:wet_cement",
-	cooktime = 8
-})
-
-minetest.register_craft({
-	output = "default:gravel",
-	recipe = {
-		{"gloopblocks:cement"},
-	},
-})
-
-
 if minetest.get_modpath("glooptest") then
 
 	minetest.register_craft({

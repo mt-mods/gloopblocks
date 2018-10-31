@@ -45,14 +45,6 @@ if not minetest.setting_getbool("pbj_pup_alias_nyancat") then
 	end
 end
 
-minetest.register_node("gloopblocks:cement", {
-	description = S("Cement"),
-	tiles = {"gloopblocks_cement.png"},
-	is_ground_content = true,
-	groups = {cracky=2},
-	sounds = default.node_sound_stone_defaults(),
-})
-
 minetest.register_node("gloopblocks:evil_block", {
 	description = S("Evil Block"),
 	tiles = {"gloopblocks_evil_block.png"},
@@ -360,35 +352,7 @@ if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
 		end
 	end
 end
---[[
-if minetest.get_modpath("xdecor") then
-	xdecor.worktable_nodes.gloopblocks = {
-		"oerkki_block", "stone_brick_mossy", "stone_mossy", "cobble_road",
-		"cobble_road_mossy", "cement", "pavement","rainbow_block",
-		"evil_block", "basalt", "pumice"
-	}
 
-	if minetest.setting_getbool("gloopblocks_mossy_conversion") then
-		local subnames = {
-			"", "_nanoslab", "_micropanel", "_microslab", "_thinstair", "_cube",
-			"_panel", "_slab", "_doublepanel", "_halfstair", "_outerstair",
-			"_stair", "_innerstair"
-		}
-		for _, subname in ipairs(subnames) do
-			gloopblocks_register_mossy_conversion({
-				-- Cobble --> Mossy Cobble
-				{ "default:cobble"..subname, "default:mossycobble"..subname },
-				-- Cobble Road --> Mossy Cobble Road
-				{ "gloopblocks:cobble_road"..subname, "gloopblocks:cobble_road_mossy"..subname },
-				-- Stone Brick --> Stone Brick Mossy
-				{ "default:stonebrick"..subname, "gloopblocks:stone_brick_mossy"..subname},
-				-- Stone --> Mossy Stone
-				{ "default:stone"..subname, "gloopblocks:stone_mossy"..subname}
-			})
-		end
-	end
-end
---]]
 if minetest.get_modpath("moreblocks") then
 
 	stairsplus:register_all("gloopblocks", "oerkki_block", "gloopblocks:oerkki_block", {
@@ -438,9 +402,9 @@ if minetest.get_modpath("moreblocks") then
 		sunlight_propagates = true,
 	})
 
-	stairsplus:register_all("gloopblocks", "cement", "gloopblocks:cement", {
+	stairsplus:register_all("gloopblocks", "cement", "basic_materials:cement_block", {
 		description = S("Cement"),
-		tiles = {"gloopblocks_cement.png"},
+		tiles = {"basic_materials_cement_block.png"},
 		groups = {cracky=2, not_in_creative_inventory=1},
 		sounds = default.node_sound_stone_defaults(),
 		sunlight_propagates = true,
@@ -825,11 +789,6 @@ minetest.register_tool("gloopblocks:sword_evil", {
 })
 
 -- Other items
-
-minetest.register_craftitem("gloopblocks:wet_cement", {
-	description = S("Wet Cement"),
-	inventory_image = "gloopblocks_wet_cement.png",
-})
 
 minetest.register_craftitem("gloopblocks:evil_stick", {
 	description = S("Evil Stick"),
