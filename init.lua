@@ -188,7 +188,7 @@ if not minetest.get_modpath("usesdirt") then
 	end
 
 	minetest.register_node(":usesdirt:dirt_ladder", {
-		description = "Ladder",
+		description = "Dirt Ladder",
 		drawtype = "signlike",
 		tiles = { dirt_ladder_tex },
 		inventory_image = dirt_ladder_tex,
@@ -244,7 +244,7 @@ if not minetest.get_modpath("usesdirt") then
 	})
 
 	minetest.register_node(":usesdirt:dirt_cobble_stone_ladder", {
-		description = "Ladder",
+		description = "Dirt Cobble Stone Ladder",
 		drawtype = "signlike",
 		tiles = { dirt_cobble_ladder_tex },
 		inventory_image = dirt_cobble_ladder_tex,
@@ -292,7 +292,7 @@ if not minetest.get_modpath("usesdirt") then
 	})
 
 	minetest.register_node(":usesdirt:dirt_stone_ladder", {
-		description = "Ladder",
+		description = "Dirt Stone Ladder",
 		drawtype = "signlike",
 		tiles = { dirt_stone_ladder_tex },
 		inventory_image = dirt_stone_ladder_tex,
@@ -321,8 +321,8 @@ if not minetest.get_modpath("usesdirt") then
 	})
 
 	default.register_fence(":usesdirt:dirt_stone_fence", {
-		description = "Dirt Cobble Stone Fence",
-		texture = dirt_cobble_tex,
+		description = "Dirt Stone Fence",
+		texture = dirt_stone_tex,
 		inventory_image = "default_fence_overlay.png^("..dirt_stone_tex..")^default_fence_overlay.png^[makealpha:255,126,126",
 		wield_image = "default_fence_overlay.png^("..dirt_stone_tex..")^default_fence_overlay.png^[makealpha:255,126,126",
 		material = "usesdirt:dirt_stone",
