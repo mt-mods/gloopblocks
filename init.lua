@@ -909,8 +909,12 @@ if minetest.get_modpath("worldedit") then
 	function gloopblocks.liquid_ungrief(pos1, pos2, name)
 		local count
 		local p1to2 = minetest.pos_to_string(pos1).." and "..minetest.pos_to_string(pos2)
-		minetest.chat_send_player(name, "Cleaned-up lava/water griefing between "..p1to2..".")
-		minetest.log("action", name.." performs lava-water greifing cleanup between "..p1to2..".")
+		local volume = worldedit.volume(pos1, pos2)
+		minetest.chat_send_player(name, "Cleaning-up lava/water griefing between "..p1to2.."...")
+		if volume > 1000000 then
+			minetest.chat_send_player(name, "This operation could affect up to "..volume.." nodes.  It may take a while.")
+		end
+		minetest.log("action", name.." performs lava/water greifing cleanup between "..p1to2..".")
 		count = worldedit.replace(pos1, pos2, "default:lava_source", "air")
 		count = worldedit.replace(pos1, pos2, "default:lava_flowing", "air")
 		count = worldedit.replace(pos1, pos2, "default:water_source", "air")
@@ -921,6 +925,7 @@ if minetest.get_modpath("worldedit") then
 		count = worldedit.replace(pos1, pos2, "gloopblocks:basalt_cooled", "air")
 		count = worldedit.replace(pos1, pos2, "gloopblocks:obsidian_cooled", "air")
 		count = worldedit.fixlight(pos1, pos2)
+		minetest.chat_send_player(name, "Operation completed.")
 	end
 
 	minetest.register_chatcommand("/liquid_ungrief", {
