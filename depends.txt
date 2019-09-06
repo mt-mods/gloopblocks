@@ -11,3 +11,4 @@ caverealms?
 technic?
 nyancat?
 usesdirt?
+worldedit?
