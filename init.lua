@@ -362,6 +362,14 @@ if not minetest.get_modpath("usesdirt") then
 		groups = {cracky=3, stone=2},
 		sounds = default.node_sound_stone_defaults()
 	})
+
+	if minetest.get_modpath("signs_lib") then
+		signs_lib.allowed_poles["usesdirt:dirt_brick_fence"]        = true
+		signs_lib.allowed_poles["usesdirt:dirt_fence"]              = true
+		signs_lib.allowed_poles["usesdirt:dirt_cobble_stone_fence"] = true
+		signs_lib.allowed_poles["usesdirt:dirt_stone_fence"]        = true
+		signs_lib.allowed_poles["usesdirt:dirt_stone_fence"]        = true
+	end
 end
 
 -- Stairs/slabs defs, conversion of normal -> mossy items
