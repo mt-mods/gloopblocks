@@ -8,9 +8,8 @@ Maintained by VanessaE.
 
 gloopblocks = {}
 
--- Load support for intllib.
 local MP = minetest.get_modpath(minetest.get_current_modname())
-local S, NS = dofile(MP.."/intllib.lua")
+local S = minetest.get_translator(minetest.get_current_modname())
 
 dofile(MP.."/main.lua")
 dofile(MP.."/crafts.lua")
