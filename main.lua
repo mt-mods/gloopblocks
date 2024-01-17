@@ -106,14 +106,14 @@ minetest.register_node("gloopblocks:stone_mossy", {
 })
 
 minetest.register_node("gloopblocks:cobble_road", {
-	description = S("Cobblestone Road Bed"),
+	description = S("Cobblestone Roadbed"),
 	tiles = {"gloopblocks_cobble_road.png"},
 	groups = {cracky=3, stone=1},
 	sounds = default.node_sound_stone_defaults(),
 })
 
 minetest.register_node("gloopblocks:cobble_road_mossy", {
-	description = S("Mossy Cobblestone Road Bed"),
+	description = S("Mossy Cobblestone Roadbed"),
 	tiles = {"gloopblocks_cobble_road_mossy.png"},
 	groups = {cracky=3, stone=1},
 	sounds = default.node_sound_stone_defaults(),
@@ -278,7 +278,7 @@ if not minetest.get_modpath("usesdirt") then
 
 	minetest.register_node(":usesdirt:dirt_cobble_stone", {
 		tiles = { dirt_cobble_tex },
-		description = "Dirt Cobble Stone",
+		description = "Dirt Cobblestone",
 		is_ground_content = true,
 		groups = {cracky=3, stone=2},
 	})
@@ -292,7 +292,7 @@ if not minetest.get_modpath("usesdirt") then
 	})
 
 	minetest.register_node(":usesdirt:dirt_cobble_stone_ladder", {
-		description = "Dirt Cobble Stone Ladder",
+		description = "Dirt Cobblestone Ladder",
 		drawtype = "signlike",
 		tiles = { dirt_cobble_ladder_tex },
 		inventory_image = dirt_cobble_ladder_tex,
@@ -321,7 +321,7 @@ if not minetest.get_modpath("usesdirt") then
 	})
 
 	default.register_fence(":usesdirt:dirt_cobble_stone_fence", {
-		description = "Dirt Cobble Stone Fence",
+		description = "Dirt Cobblestone Fence",
 		texture = dirt_cobble_tex,
 		inventory_image = "default_fence_overlay.png^("..dirt_cobble_tex..")^default_fence_overlay.png^[makealpha:255,126,126",
 		wield_image = "default_fence_overlay.png^("..dirt_cobble_tex..")^default_fence_overlay.png^[makealpha:255,126,126",
@@ -613,8 +613,8 @@ elseif minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab("mossycobble", "default:mossycobble",
 		{cracky=3},
 		{"default_mossycobble.png"},
-		S("Mossy Cobble Stair"),
-		S("Mossy Cobble Slab"),
+		S("Mossy Cobblestone Stair"),
+		S("Mossy Cobblestone Slab"),
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_stone_brick_mossy
@@ -629,16 +629,16 @@ elseif minetest.get_modpath("stairs") then
 	stairs.register_stair_and_slab("cobble_road", "gloopblocks:cobble_road",
 		{cracky=3},
 		{"gloopblocks_cobble_road.png"},
-		S("Cobble Roadbed Stair"),
-		S("Cobble Roadbed Slab"),
+		S("Cobblestone Roadbed Stair"),
+		S("Cobblestone Roadbed Slab"),
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_cobble_road_mossy
 	stairs.register_stair_and_slab("cobble_road_mossy", "gloopblocks:cobble_road_mossy",
 		{cracky=3},
 		{"gloopblocks_cobble_road_mossy.png"},
-		S("Mossy Cobble Roadbed Stair"),
-		S("Mossy Cobble Roadbed Slab"),
+		S("Mossy Cobblestone Roadbed Stair"),
+		S("Mossy Cobblestone Roadbed Slab"),
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_cement
