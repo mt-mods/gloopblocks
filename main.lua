@@ -1,4 +1,6 @@
 local S = minetest.get_translator(minetest.get_current_modname())
+-- Same as S, but will be ignored by mod translation updater
+local T = S
 
 -- Nodes
 
@@ -599,83 +601,94 @@ if minetest.get_modpath("moreblocks") then
 
 elseif minetest.get_modpath("stairs") then
 
-	--stairs.register_stair(subname, recipeitem, groups, images, description, sounds)
+	-- Local function so we can apply translations, specifically for inner/outer stairs
+	local function my_stairs_register_stair_and_slab(subname, recipeitem, groups, images,
+			desc_stair, desc_slab, sounds)
+		stairs.register_stair(subname, recipeitem, groups, images, S(desc_stair),
+				sounds, false)
+		stairs.register_stair_inner(subname, recipeitem, groups, images, "",
+				sounds, false, T("Inner " .. desc_stair))
+		stairs.register_stair_outer(subname, recipeitem, groups, images, "",
+				sounds, false, T("Outer " .. desc_stair))
+		stairs.register_slab(subname, recipeitem, groups, images, S(desc_slab),
+				sounds, false)
+	end
 
 	-- stairs:xxxx_stone_mossy ; xxxx = stair or slab
-	stairs.register_stair_and_slab("stone_mossy", "gloopblocks:stone_mossy",
+	my_stairs_register_stair_and_slab("stone_mossy", "gloopblocks:stone_mossy",
 		{cracky=3},
 		{"gloopblocks_stone_mossy.png"},
-		S("Mossy Stone Stair"),
-		S("Mossy Stone Slab"),
+		"Mossy Stone Stair",
+		"Mossy Stone Slab",
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_mossycobble
-	stairs.register_stair_and_slab("mossycobble", "default:mossycobble",
+	my_stairs_register_stair_and_slab("mossycobble", "default:mossycobble",
 		{cracky=3},
 		{"default_mossycobble.png"},
-		S("Mossy Cobblestone Stair"),
-		S("Mossy Cobblestone Slab"),
+		"Mossy Cobblestone Stair",
+		"Mossy Cobblestone Slab",
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_stone_brick_mossy
-	stairs.register_stair_and_slab("stone_brick_mossy", "gloopblocks:stone_brick_mossy",
+	my_stairs_register_stair_and_slab("stone_brick_mossy", "gloopblocks:stone_brick_mossy",
 		{cracky=3},
 		{"gloopblocks_stone_brick_mossy.png"},
-		S("Mossy Stone Brick Stair"),
-		S("Mossy Stone Brick Slab"),
+		"Mossy Stone Brick Stair",
+		"Mossy Stone Brick Slab",
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_cobble_road
-	stairs.register_stair_and_slab("cobble_road", "gloopblocks:cobble_road",
+	my_stairs_register_stair_and_slab("cobble_road", "gloopblocks:cobble_road",
 		{cracky=3},
 		{"gloopblocks_cobble_road.png"},
-		S("Cobblestone Roadbed Stair"),
-		S("Cobblestone Roadbed Slab"),
+		"Cobblestone Roadbed Stair",
+		"Cobblestone Roadbed Slab",
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_cobble_road_mossy
-	stairs.register_stair_and_slab("cobble_road_mossy", "gloopblocks:cobble_road_mossy",
+	my_stairs_register_stair_and_slab("cobble_road_mossy", "gloopblocks:cobble_road_mossy",
 		{cracky=3},
 		{"gloopblocks_cobble_road_mossy.png"},
-		S("Mossy Cobblestone Roadbed Stair"),
-		S("Mossy Cobblestone Roadbed Slab"),
+		"Mossy Cobblestone Roadbed Stair",
+		"Mossy Cobblestone Roadbed Slab",
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_cement
-	stairs.register_stair_and_slab("cement", "gloopblocks:cement",
+	my_stairs_register_stair_and_slab("cement", "gloopblocks:cement",
 		{cracky=2},
 		{"basic_materials_cement_block.png"},
-		S("Cement Stair"),
-		S("Cement Slab"),
+		"Cement Stair",
+		"Cement Slab",
 		default.node_sound_stone_defaults())
 
 	-- stairs:xxxx_pavement
-	stairs.register_stair_and_slab("pavement", "gloopblocks:pavement",
+	my_stairs_register_stair_and_slab("pavement", "gloopblocks:pavement",
 		{cracky=3, oddly_breakable_by_hand=3},
 		{"gloopblocks_pavement.png"},
-		S("Pavement Stair"),
-		S("Pavement Slab"),
+		"Pavement Stair",
+		"Pavement Slab",
 		default.node_sound_stone_defaults())
 
-	stairs.register_stair_and_slab("basalt", "gloopblocks:basalt",
+	my_stairs_register_stair_and_slab("basalt", "gloopblocks:basalt",
 		{cracky=2},
 		{"gloopblocks_basalt.png"},
-		S("Basalt Stair"),
-		S("Basalt Slab"),
+		"Basalt Stair",
+		"Basalt Slab",
 		default.node_sound_stone_defaults())
 
-	stairs.register_stair_and_slab("pumice", "gloopblocks:pumice",
+	my_stairs_register_stair_and_slab("pumice", "gloopblocks:pumice",
 		{cracky=3},
 		{"gloopblocks_pumice.png"},
-		S("Pumice Stair"),
-		S("Pumice Slab"),
+		"Pumice Stair",
+		"Pumice Slab",
 		default.node_sound_stone_defaults())
 
-	stairs.register_stair_and_slab("rainbow_block", "gloopblocks:rainbow_block",
+	my_stairs_register_stair_and_slab("rainbow_block", "gloopblocks:rainbow_block",
 		{cracky=3},
 		{"gloopblocks_rainbow_block.png"},
-		S("Rainbow Block Stair"),
-		S("Rainbow Block Slab"),
+		"Rainbow Block Stair",
+		"Rainbow Block Slab",
 		default.node_sound_defaults())
 
 	if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
@@ -860,3 +873,51 @@ minetest.register_node("gloopblocks:fence_steel", {
 
 minetest.register_alias("nyancat:nyancat_rainbow", "gloopblocks:rainbow_block_horizontal")
 minetest.register_alias("default:nyancat_rainbow", "gloopblocks:rainbow_block_horizontal")
+
+-- These are dummy calls to S() for the translation updater script.
+-- To update this list, add this code to my_stairs_register_stair_and_slab function:
+-- for _, x in ipairs({"", "Inner ", "Outer "}) do print(("S(%q)"):format(x .. desc_stair)) end
+-- print(("S(%q)"):format(desc_slab))
+
+--[[
+S("Mossy Stone Stair")
+S("Inner Mossy Stone Stair")
+S("Outer Mossy Stone Stair")
+S("Mossy Stone Slab")
+S("Mossy Cobblestone Stair")
+S("Inner Mossy Cobblestone Stair")
+S("Outer Mossy Cobblestone Stair")
+S("Mossy Cobblestone Slab")
+S("Mossy Stone Brick Stair")
+S("Inner Mossy Stone Brick Stair")
+S("Outer Mossy Stone Brick Stair")
+S("Mossy Stone Brick Slab")
+S("Cobblestone Roadbed Stair")
+S("Inner Cobblestone Roadbed Stair")
+S("Outer Cobblestone Roadbed Stair")
+S("Cobblestone Roadbed Slab")
+S("Mossy Cobblestone Roadbed Stair")
+S("Inner Mossy Cobblestone Roadbed Stair")
+S("Outer Mossy Cobblestone Roadbed Stair")
+S("Mossy Cobblestone Roadbed Slab")
+S("Cement Stair")
+S("Inner Cement Stair")
+S("Outer Cement Stair")
+S("Cement Slab")
+S("Pavement Stair")
+S("Inner Pavement Stair")
+S("Outer Pavement Stair")
+S("Pavement Slab")
+S("Basalt Stair")
+S("Inner Basalt Stair")
+S("Outer Basalt Stair")
+S("Basalt Slab")
+S("Pumice Stair")
+S("Inner Pumice Stair")
+S("Outer Pumice Stair")
+S("Pumice Slab")
+S("Rainbow Block Stair")
+S("Inner Rainbow Block Stair")
+S("Outer Rainbow Block Stair")
+S("Rainbow Block Slab")
+--]]
