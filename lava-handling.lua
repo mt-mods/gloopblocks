@@ -8,7 +8,7 @@ if minetest.setting_getbool("gloopblocks_lavacooling") ~= false then
 	minetest.register_node("gloopblocks:obsidian_cooled", {
 		description = S("Obsidian"),
 		tiles = {"default_obsidian.png"},
-		is_ground_content = true,
+		is_ground_content = false,
 		sounds = default.node_sound_stone_defaults(),
 		groups = {cracky=1, level=2, not_in_creative_inventory=1},
 		drop = "default:obsidian",
@@ -21,6 +21,7 @@ if minetest.setting_getbool("gloopblocks_lavacooling") ~= false then
 		description = S("Basalt"),
 		tiles = {"gloopblocks_basalt.png"},
 		groups = {cracky=2, not_in_creative_inventory=1},
+		is_ground_content = false,
 		sounds = default.node_sound_stone_defaults(),
 		drop = "gloopblocks:basalt",
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
@@ -32,6 +33,7 @@ if minetest.setting_getbool("gloopblocks_lavacooling") ~= false then
 		description = S("Pumice"),
 		tiles = {"gloopblocks_pumice.png"},
 		groups = {cracky=3, not_in_creative_inventory=1},
+		is_ground_content = false,
 		sounds = default.node_sound_stone_defaults(),
 		drop = "gloopblocks:pumice",
 		after_place_node = function(pos, placer, itemstack, pointed_thing)
@@ -73,6 +75,7 @@ if minetest.setting_getbool("gloopblocks_lava_damage") then
 		description = S("Block of ashes"),
 		tiles = {"gloopblocks_ashes.png"},
 		groups = {crumbly = 3},
+		is_ground_content = false,
 		sounds = default.node_sound_dirt_defaults(),
 	})
 
@@ -89,6 +92,7 @@ if minetest.setting_getbool("gloopblocks_lava_damage") then
 		selection_box = cbox,
 		collision_box = cbox,
 		groups = {crumbly = 3},
+		is_ground_content = false,
 		sounds = default.node_sound_dirt_defaults(),
 	})
 
