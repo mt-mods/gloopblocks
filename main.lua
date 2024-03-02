@@ -7,7 +7,7 @@ local T = S
 minetest.register_node("gloopblocks:rainbow_block_diagonal", {
 	description = S("Diagonal Rainbow Block"),
 	tiles = {"gloopblocks_rainbow_block.png"},
-	is_ground_content = true,
+	is_ground_content = false,
 	groups = {cracky=3},
 	sounds = default.node_sound_defaults(),
 })
@@ -32,7 +32,7 @@ minetest.register_node("gloopblocks:evil_block", {
 	description = S("Evil Block"),
 	tiles = {"gloopblocks_evil_block.png"},
 	light_source = 5,
-	is_ground_content = true,
+	is_ground_content = false,
 	groups = {cracky=2},
 
 	sounds = default.node_sound_stone_defaults(),
@@ -42,6 +42,7 @@ minetest.register_node("gloopblocks:basalt", {
 	description = S("Basalt"),
 	tiles = {"gloopblocks_basalt.png"},
 	groups = {cracky=2},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -49,6 +50,7 @@ minetest.register_node("gloopblocks:pumice", {
 	description = S("Pumice"),
 	tiles = {"gloopblocks_pumice.png"},
 	groups = {cracky=3},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -57,6 +59,7 @@ minetest.register_node("gloopblocks:pavement", {
 	description = S("Pavement"),
 	tiles = {"gloopblocks_pavement.png"},
 	groups = {cracky=3, oddly_breakable_by_hand=3},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -74,6 +77,7 @@ minetest.register_node("gloopblocks:oerkki_block", {
 		"gloopblocks_oerkkiblock_front.png"
 	},
 	groups = {cracky=3, oddly_breakable_by_hand=3},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 	selection_box = {
 		type = "fixed",
@@ -96,6 +100,7 @@ minetest.register_node("gloopblocks:stone_brick_mossy", {
 	description = S("Mossy Stone Brick"),
 	tiles = {"gloopblocks_stone_brick_mossy.png"},
 	groups = {cracky=3, stone=1},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -103,6 +108,7 @@ minetest.register_node("gloopblocks:stone_mossy", {
 	description = S("Mossy Stone"),
 	tiles = {"gloopblocks_stone_mossy.png"},
 	groups = {cracky=3, stone=1},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 	drop = "default:mossycobble"
 })
@@ -111,6 +117,7 @@ minetest.register_node("gloopblocks:cobble_road", {
 	description = S("Cobblestone Roadbed"),
 	tiles = {"gloopblocks_cobble_road.png"},
 	groups = {cracky=3, stone=1},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -118,6 +125,7 @@ minetest.register_node("gloopblocks:cobble_road_mossy", {
 	description = S("Mossy Cobblestone Roadbed"),
 	tiles = {"gloopblocks_cobble_road_mossy.png"},
 	groups = {cracky=3, stone=1},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -128,6 +136,7 @@ minetest.register_node("gloopblocks:scaffolding", {
 	sunlight_propagates = true,
 	tiles = {"gloopblocks_scaffold.png"},
 	groups = {choppy=3, oddly_breakable_by_hand=3},
+	is_ground_content = false,
 	sounds = default.node_sound_wood_defaults(),
 })
 
@@ -151,6 +160,7 @@ minetest.register_node("gloopblocks:concrete_sidewalk", {
 	},
 	on_rotate = screwdriver.rotate_simple,
 	groups = {cracky=2},
+	is_ground_content = false,
 	sounds = default.node_sound_stone_defaults(),
 })
 
@@ -175,6 +185,7 @@ if not minetest.get_modpath("usesdirt") then
 		tiles = { dirt_brick_tex },
 		description = "Dirt Brick",
 		groups = {snappy=2,choppy=1,oddly_breakable_by_hand=2},
+		is_ground_content = false,
 	})
 
 	minetest.register_node(":usesdirt:dirt_brick_ladder", {
@@ -185,7 +196,7 @@ if not minetest.get_modpath("usesdirt") then
 		wield_image     = dirt_brick_ladder_tex,
 		paramtype = "light",
 		paramtype2 = "wallmounted",
-		is_ground_content = true,
+		is_ground_content = false,
 		walkable = false,
 		climbable = true,
 		selection_box = {
@@ -244,7 +255,7 @@ if not minetest.get_modpath("usesdirt") then
 		wield_image     = dirt_ladder_tex,
 		paramtype = "light",
 		paramtype2 = "wallmounted",
-		is_ground_content = true,
+		is_ground_content = false,
 		walkable = false,
 		climbable = true,
 		selection_box = {
@@ -281,7 +292,7 @@ if not minetest.get_modpath("usesdirt") then
 	minetest.register_node(":usesdirt:dirt_cobble_stone", {
 		tiles = { dirt_cobble_tex },
 		description = "Dirt Cobblestone",
-		is_ground_content = true,
+		is_ground_content = false,
 		groups = {cracky=3, stone=2},
 	})
 	minetest.register_craft({
@@ -301,7 +312,7 @@ if not minetest.get_modpath("usesdirt") then
 		wield_image     = dirt_cobble_ladder_tex,
 		paramtype = "light",
 		paramtype2 = "wallmounted",
-		is_ground_content = true,
+		is_ground_content = false,
 		walkable = false,
 		climbable = true,
 		selection_box = {
@@ -338,7 +349,7 @@ if not minetest.get_modpath("usesdirt") then
 	minetest.register_node(":usesdirt:dirt_stone", {
 		tiles = { dirt_stone_tex },
 		description = "Dirt Stone",
-		is_ground_content = true,
+		is_ground_content = false,
 		groups = {cracky=3, stone=2},
 	})
 
@@ -350,7 +361,7 @@ if not minetest.get_modpath("usesdirt") then
 		wield_image     = dirt_stone_ladder_tex,
 		paramtype = "light",
 		paramtype2 = "wallmounted",
-		is_ground_content = true,
+		is_ground_content = false,
 		walkable = false,
 		climbable = true,
 		selection_box = {
