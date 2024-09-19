@@ -271,7 +271,7 @@ if not minetest.get_modpath("usesdirt") then
 		output = 'usesdirt:dirt_ladder 3',
 		recipe = {
 			{'usesdirt:dirt_brick', '', 'usesdirt:dirt_brick'},
-			{'usesdirt:dirt_brick', 'usesdirt:dirt_brick','usesdirt:dirt_brick'},
+			{'usesdirt:dirt_brick', '','usesdirt:dirt_brick'},
 			{'usesdirt:dirt_brick','','usesdirt:dirt_brick'},
 		}
 	})
