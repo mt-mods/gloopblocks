@@ -396,7 +396,7 @@ end
 
 -- Stairs/slabs defs, conversion of normal -> mossy items
 
-if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
+if minetest.settings:get_bool("gloopblocks_mossy_conversion") ~= false then
 
 	function gloopblocks_register_mossy_conversion(mossyobjects)
 		for i in ipairs(mossyobjects) do
@@ -515,43 +515,22 @@ if minetest.get_modpath("moreblocks") then
 	})
 
 	if minetest.get_modpath("caverealms") then
-		stairsplus:register_all("caverealms", "glow_crystal", "caverealms:glow_crystal", {
-			description = S("Glow Crystal"),
-			tiles = {"caverealms_glow_crystal.png"},
-			groups = {cracky=3, not_in_creative_inventory=1},
-			sounds = default.node_sound_glass_defaults(),
-			light_source = 12,
-			use_texture_alpha = true,
-			paramtype="light",
-			sunlight_propagates = true,
-		})
-
-		stairsplus:register_all("caverealms", "glow_emerald", "caverealms:glow_emerald", {
-			description = S("Glow Emerald"),
-			tiles = {"caverealms_glow_emerald.png"},
-			groups = {cracky=3, not_in_creative_inventory=1},
-			sounds = default.node_sound_glass_defaults(),
-			light_source = 12,
-			use_texture_alpha = true,
-			paramtype="light",
-			sunlight_propagates = true,
-		})
-
-		stairsplus:register_all("caverealms", "glow_mese", "caverealms:glow_mese", {
-			description = S("Glow Mese"),
-			tiles = {"caverealms_glow_mese.png"},
-			groups = {cracky=3, not_in_creative_inventory=1},
-			sounds = default.node_sound_glass_defaults(),
-			light_source = 12,
-			use_texture_alpha = true,
-			paramtype="light",
-			sunlight_propagates = true,
-		})
+		local cave_nodes = {
+			["glow_crystal"] = S("Glow Crystal"),
+			["glow_emerald"] = S("Glow Emerald"),
+			["glow_mese"] = S("Glow Mese")
+		}
+		for name, description in pairs(cave_nodes) do
+			local nodename = "caverealms:" .. name
+			local ndef = table.copy(minetest.registered_nodes[nodename])
+			ndef.description = description
+			stairsplus:register_all("caverealms", name, nodename, ndef)
+		end
 	end
 
 	-- ABMs for mossy objects
 
-	if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
+	if minetest.settings:get_bool("gloopblocks_mossy_conversion") ~= false then
 
 		gloopblocks_register_mossy_conversion({
 			{ "moreblocks:stair_cobble", 				"moreblocks:stair_mossycobble" },
@@ -702,7 +681,7 @@ elseif minetest.get_modpath("stairs") then
 		"Rainbow Block Slab",
 		default.node_sound_defaults())
 
-	if minetest.setting_getbool("gloopblocks_mossy_conversion") ~= false then
+	if minetest.settings:get_bool("gloopblocks_mossy_conversion") ~= false then
 
 		gloopblocks_register_mossy_conversion({
 			{ "default:cobble", 					"default:mossycobble" },
