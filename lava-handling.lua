@@ -3,7 +3,7 @@ local S = minetest.get_translator(minetest.get_current_modname())
 -- define lava-cooling-based nodes and hook into the default lavacooling
 -- functions to generate basalt, pumice, and obsidian
 
-if minetest.setting_getbool("gloopblocks_lavacooling") ~= false then
+if minetest.settings:get_bool("gloopblocks_lavacooling") ~= false then
 
 	minetest.register_node("gloopblocks:obsidian_cooled", {
 		description = S("Obsidian"),
@@ -70,7 +70,7 @@ end
 -- Allows lava to "bake" neighboring nodes (or reduce them to ashes)
 -- disabled by default.  You probably don't want this on a creative server :-P
 
-if minetest.setting_getbool("gloopblocks_lava_damage") then
+if minetest.settings:get_bool("gloopblocks_lava_damage") then
 	minetest.register_node("gloopblocks:ash_block", {
 		description = S("Block of ashes"),
 		tiles = {"gloopblocks_ashes.png"},
