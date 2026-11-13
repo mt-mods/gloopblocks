@@ -8,8 +8,8 @@ Maintained by VanessaE.
 
 gloopblocks = {}
 
-local MP = minetest.get_modpath(minetest.get_current_modname())
-local S = minetest.get_translator(minetest.get_current_modname())
+local MP = core.get_modpath(core.get_current_modname())
+local S = core.get_translator(core.get_current_modname())
 
 dofile(MP.."/main.lua")
 dofile(MP.."/crafts.lua")

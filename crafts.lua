@@ -1,6 +1,6 @@
 -- Various crafts
 
-minetest.register_craft( {
+core.register_craft( {
 	type = "shapeless",
 	output = "gloopblocks:rainbow_block",
 	recipe = {
@@ -16,11 +16,11 @@ minetest.register_craft( {
 })
 
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "default:nyancat_rainbow",
 	recipe = {
-		"gloopblocks:rainbow_block", 
+		"gloopblocks:rainbow_block",
 		"default:diamondblock",
 		"default:steelblock",
 		"default:copperblock",
@@ -32,7 +32,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "default:nyancat",
 	recipe = {
 		{"gloopblocks:rainbow_block", "gloopblocks:rainbow_block", "gloopblocks:rainbow_block"},
@@ -41,9 +41,9 @@ minetest.register_craft({
 	}
 })
 
-if minetest.get_modpath("glooptest") then
+if core.get_modpath("glooptest") then
 
-	minetest.register_craft({
+	core.register_craft({
 		type = "shapeless",
 		output = "gloopblocks:evil_stick",
 		recipe = {
@@ -54,7 +54,7 @@ if minetest.get_modpath("glooptest") then
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = "gloopblocks:evil_block",
 		recipe = {
 			{"gloopblocks:evil_stick", "gloopblocks:evil_stick"},
@@ -62,14 +62,14 @@ if minetest.get_modpath("glooptest") then
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = "gloopblocks:evil_stick 4",
 		recipe = {
 			{"gloopblocks:evil_block"}
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = "gloopblocks:pick_evil",
 		recipe = {
 			{"gloopblocks:evil_block", "gloopblocks:evil_block", "gloopblocks:evil_block"},
@@ -78,7 +78,7 @@ if minetest.get_modpath("glooptest") then
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = "gloopblocks:axe_evil",
 		recipe = {
 			{"gloopblocks:evil_block", "gloopblocks:evil_block"},
@@ -87,7 +87,7 @@ if minetest.get_modpath("glooptest") then
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = "gloopblocks:axe_evil",
 		recipe = {
 			{"gloopblocks:evil_block", "gloopblocks:evil_block"},
@@ -96,7 +96,7 @@ if minetest.get_modpath("glooptest") then
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = "gloopblocks:shovel_evil",
 		recipe = {
 			{"gloopblocks:evil_block"},
@@ -105,7 +105,7 @@ if minetest.get_modpath("glooptest") then
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = "gloopblocks:sword_evil",
 		recipe = {
 			{"gloopblocks:evil_block"},
@@ -115,7 +115,7 @@ if minetest.get_modpath("glooptest") then
 	})
 end
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:scaffolding 12",
 		recipe = {
 		{"group:stick", "group:wood", "group:stick"},
@@ -124,7 +124,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:pick_cement",
 	recipe = {
 		{"gloopblocks:cement", "gloopblocks:cement", "gloopblocks:cement"},
@@ -133,7 +133,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:axe_cement",
 	recipe = {
 		{"gloopblocks:cement", "gloopblocks:cement"},
@@ -142,7 +142,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:axe_cement",
 	recipe = {
 		{"gloopblocks:cement", "gloopblocks:cement"},
@@ -151,7 +151,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:shovel_cement",
 	recipe = {
 		{"gloopblocks:cement"},
@@ -160,7 +160,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:sword_cement",
 	recipe = {
 		{"gloopblocks:cement"},
@@ -169,7 +169,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:pavement 5",
 	recipe = {
 		{"gloopblocks:basalt",    "gloopblocks:wet_cement","gloopblocks:basalt"},
@@ -178,7 +178,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:pavement 5",
 	recipe = {
 		{"gloopblocks:wet_cement","gloopblocks:basalt",    "gloopblocks:wet_cement"},
@@ -187,7 +187,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:oerkki_block 2",
 	recipe = {
 		{"default:iron_lump", "default:coal_lump", "default:iron_lump"},
@@ -197,7 +197,7 @@ minetest.register_craft({
 	replacements = { { "default:bookshelf", "default:book 3" } }
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:oerkki_block 2",
 	recipe = {
 		{"default:coal_lump", "default:iron_lump", "default:coal_lump"},
@@ -207,7 +207,7 @@ minetest.register_craft({
 	replacements = { { "default:bookshelf", "default:book 3" } }
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:stone_brick_mossy 2",
 	recipe = {
@@ -218,7 +218,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:stone_brick_mossy 2",
 	recipe = {
@@ -231,14 +231,14 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "cooking",
 	output = "gloopblocks:stonebrick",
 	recipe = "default:stone_brick_mossy",
 	cooktime = 6
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:cobble_road 5",
 	recipe = {
@@ -250,7 +250,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:cobble_road_mossy 2",
 	recipe = {
@@ -261,7 +261,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:cobble_road_mossy 2",
 	recipe = {
@@ -274,7 +274,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:stone_mossy 2",
 	recipe = {
@@ -285,7 +285,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "gloopblocks:stone_mossy 2",
 	recipe = {
@@ -298,7 +298,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	type = "shapeless",
 	output = "default:cobble 8",
 	recipe = {
@@ -313,7 +313,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:fence_steel 1",
 	recipe = {
 		{"xpanes:bar", "xpanes:bar", "xpanes:bar"},
@@ -321,10 +321,10 @@ minetest.register_craft({
 	},
 })
 
-if minetest.get_modpath("technic") then
+if core.get_modpath("technic") then
 	technic.register_grinder_recipe({input={"gloopblocks:pumice"},output="default:sand"})
 	technic.register_grinder_recipe({input={"gloopblocks:basalt"},output="default:cobble"})
-	minetest.register_craft({
+	core.register_craft({
 		type = "shapeless",
 		output = "technic:concrete 3",
 		recipe = {
@@ -335,7 +335,7 @@ if minetest.get_modpath("technic") then
 	})
 end
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:concrete_sidewalk",
 	type = "shapeless",
 	recipe = {
@@ -344,7 +344,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:concrete_sidewalk 2",
 	type = "shapeless",
 	recipe = {
@@ -354,7 +354,7 @@ minetest.register_craft({
 	}
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "gloopblocks:concrete_sidewalk 4",
 	type = "shapeless",
 	recipe = {
